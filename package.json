@@ -1,0 +1,134 @@
+{
+  "name": "noirium",
+  "version": "0.0.0",
+  "description": "Noirium UI — Vue 3 + TypeScript component library (lib + web components)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AminHadei/noirium.git"
+  },
+  "homepage": "https://aminhadei.github.io/noirium/",
+  "bugs": {
+    "url": "https://github.com/AminHadei/noirium/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/lib/core.cjs",
+  "module": "./dist/lib/core.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/types/src/entries/index.d.ts",
+      "import": "./dist/lib/core.mjs",
+      "require": "./dist/lib/core.cjs"
+    },
+    "./ui": {
+      "types": "./dist/types/src/entries/ui.d.ts",
+      "import": "./dist/lib/ui.mjs",
+      "require": "./dist/lib/ui.cjs"
+    },
+    "./integrations": {
+      "types": "./dist/types/src/entries/integrations.d.ts",
+      "import": "./dist/lib/integrations.mjs",
+      "require": "./dist/lib/integrations.cjs"
+    },
+    "./utils": {
+      "types": "./dist/types/src/entries/utils.d.ts",
+      "import": "./dist/lib/utils.mjs",
+      "require": "./dist/lib/utils.cjs"
+    },
+    "./types": {
+      "types": "./dist/types/src/entries/types.d.ts",
+      "import": "./dist/lib/types.mjs",
+      "require": "./dist/lib/types.cjs"
+    },
+    "./web-components/*": {
+      "import": "./dist/webc/*.js",
+      "require": "./dist/webc/*.js"
+    },
+    "./style.css": "./dist/lib/core.css"
+  },
+  "scripts": {
+    "dev": "vp dev",
+    "storybook": "storybook dev -c tools/storybook -p 6006",
+    "playground": "cd playground && pnpm dev --open",
+    "build": "pnpm build:lib && pnpm build:webc",
+    "build:lib": "vp build -c tools/vite/vite.lib.config.ts",
+    "build:webc": "node --experimental-strip-types tools/vite/build-webc.ts",
+    "prebuild": "rimraf dist",
+    "postbuild": "rimraf dist/**/mockServiceWorker.js",
+    "build-storybook": "pnpm build:webc && storybook build -c tools/storybook",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vp test",
+    "test:watch": "vp test watch",
+    "coverage": "vp test run --coverage",
+    "coverage:open": "pnpm coverage && open coverage/index.html",
+    "lint": "vp lint .",
+    "spellcheck": "cspell --no-progress --no-summary '**/*.{ts,js,vue,mjs,cjs,md}'",
+    "audit:check": "pnpm audit --audit-level moderate",
+    "css:check": "tools/ci/validate-output-css.sh",
+    "format": "vp fmt . --check",
+    "format:fix": "vp fmt . --write",
+    "changeset": "bash tools/changesets/new-changeset.sh",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
+    "changeset:status": "changeset status --verbose",
+    "docs:dev": "pnpm --filter noirium-docs dev",
+    "docs:build": "pnpm --filter noirium-docs build",
+    "docs:preview": "pnpm --filter noirium-docs preview"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@vueuse/core": "^14.3.0",
+    "dayjs": "^1.11.20",
+    "flag-icons": "^7.5.0",
+    "redaxios": "^0.5.1",
+    "v-calendar": "^3.1.2",
+    "valibot": "^1.4.0",
+    "vue": "^3.5.34"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.0",
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
+    "@storybook/addon-a11y": "^10.3.6",
+    "@storybook/addon-docs": "^10.3.6",
+    "@storybook/vue3-vite": "^10.3.6",
+    "@types/bun": "^1.3.13",
+    "@types/node": "^25.7.0",
+    "@unocss/preset-icons": "^66.6.8",
+    "@unocss/preset-wind4": "^66.6.8",
+    "@unocss/reset": "^66.6.8",
+    "@unocss/transformer-compile-class": "^66.6.8",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vitest/coverage-v8": "^4.1.6",
+    "@vue/test-utils": "^2.4.10",
+    "cspell": "^10.0.0",
+    "jsdom": "^29.1.1",
+    "msw": "^2.14.6",
+    "msw-storybook-addon": "^2.0.7",
+    "remark-gfm": "^4.0.1",
+    "rimraf": "^6.1.3",
+    "storybook": "^10.3.6",
+    "terser": "^5.47.1",
+    "typescript": "~6.0.3",
+    "unocss": "^66.6.8",
+    "vite": "catalog:",
+    "vite-plugin-dts": "^5.0.0",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:",
+    "vue-component-type-helpers": "^3.2.8",
+    "vue-tsc": "^3.2.8"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "packageManager": "pnpm@11.1.0",
+  "msw": {
+    "workerDirectory": [
+      "src/mocks"
+    ]
+  }
+}
