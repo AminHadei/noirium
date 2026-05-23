@@ -1,0 +1,6 @@
+MSG_FILE="$1"
+case "$2" in
+  MERGE_MSG|REBASE|squash) exit 0 ;;
+esac
+
+# Intentionally empty — commit messages are not amended from branch names.
