@@ -9,6 +9,15 @@ export { config } from '../config';
 
 export default {
   install(app: App, options?: LibVueAppOptions): void {
+    app.component(withPrefix('BaseBadge', options?.prefix), Components.BaseBadge);
+    app.component(withPrefix('BaseDialog', options?.prefix), Components.BaseDialog);
+    app.component(withPrefix('BaseDropdown', options?.prefix), Components.BaseDropdown);
+    app.component(withPrefix('CheckInput', options?.prefix), Components.CheckInput);
+    app.component(withPrefix('CountryDropdown', options?.prefix), Components.CountryDropdown);
+    app.component(withPrefix('DateInput', options?.prefix), Components.DateInput);
+    app.component(withPrefix('DatePicker', options?.prefix), Components.DatePicker);
+    app.component(withPrefix('Modal', options?.prefix), Components.Modal);
+    app.component(withPrefix('PhoneNumberInput', options?.prefix), Components.PhoneNumberInput);
     app.component(withPrefix('PrimaryButton', options?.prefix), Components.PrimaryButton);
   },
 };
