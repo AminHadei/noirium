@@ -13,5 +13,8 @@ export default {
     app.component(withPrefix('BaseDialog', options?.prefix), Components.BaseDialog);
     app.component(withPrefix('BaseDropdown', options?.prefix), Components.BaseDropdown);
     app.component(withPrefix('PrimaryButton', options?.prefix), Components.PrimaryButton);
+    app.component(withPrefix('Toast', options?.prefix), Components.Toast);
+    app.component(withPrefix('ToastContainer', options?.prefix), Components.ToastContainer);
+    app.component(withPrefix('ToastProvider', options?.prefix), Components.ToastProvider);
   },
 };
