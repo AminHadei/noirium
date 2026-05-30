@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Noirium UI Web Components Playground</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap');
+
+      :root {
+        font-family: 'Figtree', sans-serif;
+        color: #1f2937;
+        background: #f8fafc;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: 720px;
+        padding: 2rem 1rem 3rem;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .subtitle {
+        color: #4b5563;
+        margin-top: 0.5rem;
+      }
+
+      section {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 1rem;
+        margin-top: 1.25rem;
+        padding: 1rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+
+      .note {
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .row {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Noirium UI Web Components</h1>
+      <p
+        class="subtitle"
+        id="available-components"
+      ></p>
+
+      <section id="primary-section">
+        <h2>noirium-primary-button</h2>
+        <p class="note">
+          Variants: <code>primary</code>, <code>outline</code>, <code>text</code>
+        </p>
+        <div class="row">
+          <noirium-primary-button variant="primary">Primary</noirium-primary-button>
+          <noirium-primary-button variant="outline">Outline</noirium-primary-button>
+          <noirium-primary-button variant="text">Text</noirium-primary-button>
+        </div>
+      </section>
+
+      <section id="modal-section">
+        <h2>noirium-modal</h2>
+        <p class="note">Opens a modal rendered inside Shadow DOM.</p>
+        <div class="row">
+          <button
+            id="open-modal"
+            type="button"
+          >
+            Open modal
+          </button>
+        </div>
+        <noirium-modal
+          id="demo-modal"
+          title="Web component modal"
+        >
+          <p>Modal content from <code>noirium-modal</code>.</p>
+        </noirium-modal>
+      </section>
+    </main>
+
+    <script type="module">
+      const loadModule = async (path) => {
+        try {
+          await import(path);
+          return true;
+        } catch (error) {
+          console.warn(`Web component bundle not found: ${path}`, error);
+          return false;
+        }
+      };
+
+      const available = {
+        primary: await loadModule('../dist/webc/primary-button.js'),
+        modal: await loadModule('../dist/webc/modal.js'),
+      };
+
+      const sectionMap = {
+        primary: document.getElementById('primary-section'),
+        modal: document.getElementById('modal-section'),
+      };
+
+      for (const [key, section] of Object.entries(sectionMap)) {
+        if (!available[key] && section) {
+          section.hidden = true;
+        }
+      }
+
+      const summary = document.getElementById('available-components');
+      const tags = [];
+      if (available.primary) tags.push('noirium-primary-button');
+      if (available.modal) tags.push('noirium-modal');
+      if (summary) {
+        summary.textContent =
+          tags.length > 0
+            ? `Available in this build: ${tags.join(', ')}. Run pnpm build:webc first if a section is missing.`
+            : 'No web component bundles found. Run pnpm build:webc.';
+      }
+
+      if (available.modal) {
+        const openButton = document.getElementById('open-modal');
+        const modal = document.getElementById('demo-modal');
+        openButton?.addEventListener('click', () => {
+          modal?.setAttribute('visible', '');
+        });
+        modal?.addEventListener('close', () => {
+          modal.removeAttribute('visible');
+        });
+      }
+    </script>
+  </body>
+</html>
