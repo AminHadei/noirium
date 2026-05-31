@@ -1,0 +1,14 @@
+{
+  "name": "noirium-docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "oxc-minify": "^0.127.0",
+    "vitepress": "^2.0.0-alpha.17"
+  }
+}

@@ -1,0 +1,134 @@
+/* Noirium UI docs — VitePress theme overrides.
+ * Monochrome palette (#000–#fff). Mirrors uno.config.ts; keep in sync. */
+
+:root {
+  --noirium-50: #fafafa;
+  --noirium-100: #f5f5f5;
+  --noirium-200: #e5e5e5;
+  --noirium-300: #d4d4d4;
+  --noirium-400: #a3a3a3;
+  --noirium-500: #737373;
+  --noirium-600: #525252;
+  --noirium-700: #404040;
+  --noirium-800: #262626;
+  --noirium-900: #171717;
+  --noirium-950: #0a0a0a;
+
+  --vp-c-brand-1: var(--noirium-900);
+  --vp-c-brand-2: var(--noirium-700);
+  --vp-c-brand-3: var(--noirium-500);
+  --vp-c-brand-soft: color-mix(in srgb, var(--noirium-900) 10%, transparent);
+
+  --vp-c-brand-light: var(--noirium-800);
+  --vp-c-brand-lighter: var(--noirium-600);
+  --vp-c-brand-dark: var(--noirium-950);
+  --vp-c-brand-darker: #000000;
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, var(--noirium-800) 20%, var(--noirium-400));
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    var(--noirium-700) 35%,
+    var(--noirium-950) 100%
+  );
+  --vp-home-hero-image-filter: blur(48px);
+
+  --vp-custom-block-tip-border: transparent;
+  --vp-custom-block-tip-text: var(--vp-c-brand-1);
+  --vp-custom-block-tip-bg: color-mix(in srgb, var(--noirium-900) 8%, transparent);
+  --vp-custom-block-tip-code-bg: color-mix(in srgb, var(--noirium-900) 12%, transparent);
+
+  --vp-font-family-base:
+    'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+.dark {
+  --vp-c-brand-1: var(--noirium-200);
+  --vp-c-brand-2: var(--noirium-300);
+  --vp-c-brand-3: var(--noirium-400);
+  --vp-c-brand-soft: color-mix(in srgb, var(--noirium-200) 14%, transparent);
+
+  --vp-home-hero-name-background: linear-gradient(120deg, var(--noirium-200) 25%, var(--noirium-50));
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    var(--noirium-500) 40%,
+    var(--noirium-950) 100%
+  );
+}
+
+.VPHero .name,
+.VPHero .text {
+  letter-spacing: -0.02em;
+}
+
+.VPHero .tagline {
+  max-width: 48ch;
+}
+
+.VPHero .image-bg {
+  border-radius: 999px;
+}
+
+.VPFeatures .items .item .VPFeature {
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+.VPFeatures .items .item .VPFeature:hover {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -12px color-mix(in srgb, var(--noirium-950) 35%, transparent);
+}
+.VPFeatures .items .item .VPFeature .icon {
+  background-color: color-mix(in srgb, var(--noirium-900) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--noirium-900) 18%, transparent);
+  border-radius: 10px;
+}
+
+.VPNavBarMenuLink.active,
+.VPNavBarMenuLink:hover {
+  color: var(--vp-c-brand-1);
+}
+
+.VPSidebarItem.is-active > .item > .indicator {
+  background-color: var(--vp-c-brand-1);
+}
+
+.vp-doc h1 {
+  letter-spacing: -0.02em;
+}
+.vp-doc h2 {
+  border-top-color: color-mix(in srgb, var(--vp-c-divider) 100%, transparent);
+  padding-top: 20px;
+  margin-top: 40px;
+}
+
+.vp-doc :not(pre) > code {
+  background-color: color-mix(in srgb, var(--noirium-900) 8%, transparent);
+  color: var(--vp-c-brand-1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.dark .vp-doc :not(pre) > code {
+  background-color: color-mix(in srgb, var(--noirium-200) 12%, transparent);
+  color: var(--vp-c-brand-2);
+}
+
+.vp-doc th {
+  background-color: color-mix(in srgb, var(--noirium-900) 6%, transparent);
+  font-weight: 600;
+}
+.vp-doc tr:nth-child(even) td {
+  background-color: color-mix(in srgb, var(--vp-c-bg-alt) 50%, transparent);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--noirium-700) 45%, transparent);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--noirium-700);
+}
