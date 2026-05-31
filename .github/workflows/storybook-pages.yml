@@ -1,0 +1,67 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  # GitHub project site: https://<user>.github.io/<repo>/
+  DOCS_BASE: /noirium/
+  STORYBOOK_BASE: /noirium/storybook/
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          node-version-file: .nvmrc
+
+      - name: Enable pnpm
+        run: |
+          corepack enable
+          corepack prepare "$(node -pe "require('./package.json').packageManager.split('@')[1]")" --activate
+
+      - name: Build VitePress docs
+        run: pnpm docs:build
+
+      - name: Build Storybook
+        run: pnpm build-storybook
+
+      - name: Assemble site
+        run: |
+          mkdir -p site
+          cp -R docs/.vitepress/dist/. site/
+          cp -R storybook-static site/storybook
+          # Storybook HTML uses relative asset paths; <base> keeps them under /storybook/.
+          for f in site/storybook/index.html site/storybook/iframe.html; do
+            sed -i 's|<head>|<head><base href="/noirium/storybook/">|' "$f"
+          done
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
