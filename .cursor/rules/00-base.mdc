@@ -1,0 +1,17 @@
+---
+description: Base rules — defer to AGENTS.md
+alwaysApply: true
+---
+
+This project's agent documentation is the root `AGENTS.md` file. Read it before making any change. It is the single source of truth for:
+
+- Project overview and the dual library / web-component build
+- Toolchain (Vite+, pnpm, Oxlint, Oxfmt, Vitest)
+- Directory layout and feature-first organization
+- Public API and entry files
+- Styling (UnoCSS, Shadow DOM considerations)
+- TypeScript and testing conventions
+- Linting, formatting, and git conventions
+- Hard boundaries (NEVER / ALWAYS)
+
+Do not duplicate `AGENTS.md` content in Cursor rules. If a rule needs to change, change `AGENTS.md`.

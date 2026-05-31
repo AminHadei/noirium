@@ -1,0 +1,8 @@
+---
+description: Finishing a user-visible change, editing files under .changeset/, running pnpm changeset, or advising on bump types and the snapshot-publish flow. Loads the rules for bump-type selection and the never-edit-package.json-version rule.
+globs:
+  - .changeset/**/*.md
+alwaysApply: false
+---
+
+Follow the changesets rules in @.agents/skills/changesets/SKILL.md. That file is the single source of truth, shared with Claude Code, Codex CLI and Gemini CLI.

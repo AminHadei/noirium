@@ -1,0 +1,9 @@
+---
+description: Schema validation with Valibot. Use when creating or modifying Valibot schemas, parsing or validating input, or migrating from Zod. Loads Valibot API conventions, pipeline rules, and Zod-to-Valibot mapping.
+globs:
+  - "**/*.ts"
+  - "**/*.vue"
+alwaysApply: false
+---
+
+Follow the Valibot rules in @.agents/skills/valibot/SKILL.md. That file is the single source of truth, shared with Claude Code, Codex CLI and Gemini CLI.

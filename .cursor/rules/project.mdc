@@ -1,0 +1,12 @@
+---
+description: Project orientation for all agents. Always apply.
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+Agent orientation lives in [AGENTS.md](mdc:AGENTS.md) — read it first. Normative project rules live in [docs/](mdc:docs/index.md).
+
+Topic-specific guidance is loaded on demand via [.cursor/rules/](mdc:.cursor/rules/) and the canonical bodies in [.agents/skills/](mdc:.agents/skills/) (shared with Claude Code, Codex CLI, and Gemini CLI).
+
+Commands: `vp install`, `vp dev`, `vp test`, `vp lint .`, `vp fmt . --write`, `pnpm typecheck`, `vp run task:pre-commit`, `pnpm changeset`, `pnpm docs:dev`. Run `vp run task:pre-commit && pnpm typecheck` before declaring a task complete.

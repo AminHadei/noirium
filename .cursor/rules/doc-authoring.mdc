@@ -1,0 +1,9 @@
+---
+description: Editing files under docs/content/, writing or updating ADRs in docs/content/decisions/, or codifying a new project convention. Enforces the noirium rules for the docs/content/ tree — single source of truth, no duplication, no backstory in topic docs, ADRs for structural choices, and conventions land in the same change as the motivating PR.
+globs:
+  - docs/content/**/*.md
+  - docs/content/**/*.mdx
+alwaysApply: false
+---
+
+Follow the doc-authoring rules in @.agents/skills/doc-authoring/SKILL.md. That file is the single source of truth, shared with Claude Code, Codex CLI and Gemini CLI.

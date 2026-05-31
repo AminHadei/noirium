@@ -1,0 +1,6 @@
+---
+description: Reviewing a pull request, branch, or diff against noirium conventions. Loads the repo's severity calibration so review output matches team standards instead of generic linter output.
+alwaysApply: false
+---
+
+Follow the code-review rules in @.agents/skills/code-review/SKILL.md. That file is the single source of truth, shared with Claude Code, Codex CLI and Gemini CLI.

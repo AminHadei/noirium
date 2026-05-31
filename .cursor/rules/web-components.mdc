@@ -1,0 +1,10 @@
+---
+description: Editing files under src/features/**/*.webc.ts, the webc build script tools/vite/build-webc.ts, .webc.stories.ts files, or any component that ships as a custom element. Loads the dual-build rules — Shadow-DOM style injection, popper positionFixed, useTeleportTarget, the @popperjs/core UMD alias, and the bundle-impact rule.
+globs:
+  - src/features/**/*.webc.ts
+  - src/features/**/*.webc.stories.ts
+  - tools/vite/build-webc.ts
+alwaysApply: false
+---
+
+Follow the web-components rules in @.agents/skills/web-components/SKILL.md. That file is the single source of truth, shared with Claude Code, Codex CLI and Gemini CLI.

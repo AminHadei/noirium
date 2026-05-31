@@ -1,0 +1,6 @@
+---
+description: About to run git commit, write a commit message, or advise on commit-message format. Loads the noirium Conventional-Commits rules and the changeset-with-the-commit rule.
+alwaysApply: false
+---
+
+Follow the git-conventions rules in @.agents/skills/git-conventions/SKILL.md. That file is the single source of truth, shared with Claude Code, Codex CLI and Gemini CLI.

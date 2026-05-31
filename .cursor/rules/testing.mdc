@@ -1,0 +1,10 @@
+---
+description: Writing or editing test files, mounting components with @vue/test-utils v2, mocking with MSW, or hitting one of the known testing quirks (onClickOutside, child→parent emit propagation, vi.hoisted, mutable closures across template + composable). Loads the repo's testing conventions and validated workarounds.
+globs:
+  - "**/*.test.ts"
+  - "**/*.contract.ts"
+  - tools/vitest/**/*
+alwaysApply: false
+---
+
+Follow the testing rules in @.agents/skills/testing/SKILL.md. That file is the single source of truth, shared with Claude Code, Codex CLI and Gemini CLI.
