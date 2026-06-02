@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import dayjs from 'dayjs';
 
 import { Countdown } from '@/features/shared';
 
@@ -49,6 +50,11 @@ type Story = StoryObj<typeof meta>;
 // Helper to create future dates
 const getDateFromNow = (minutes: number): Date => {
   return new Date(Date.now() + minutes * 60 * 1000);
+};
+
+/** MySQL-style datetime string (YYYY-MM-DD HH:mm:ss) in the future. */
+const getFutureDatetimeString = (hoursFromNow: number): string => {
+  return dayjs().add(hoursFromNow, 'hour').format('YYYY-MM-DD HH:mm:ss');
 };
 
 export const Default: Story = {
@@ -166,13 +172,21 @@ export const CustomTextStyle: Story = {
 
 export const FullDateFormat: Story = {
   args: {
-    startDate: '2026-01-27 14:00:00',
+    startDate: getFutureDatetimeString(48),
     showIcon: true,
+  },
+  argTypes: {
+    startDate: {
+      control: 'text',
+      description:
+        'MySQL-style datetime string (YYYY-MM-DD HH:mm:ss). Must be in the future to show a countdown.',
+    },
   },
   parameters: {
     docs: {
       description: {
-        story: 'Supports Full datetime string format (YYYY-MM-DD HH:MM:SS).',
+        story:
+          'Supports full datetime string format (`YYYY-MM-DD HH:mm:ss`). The `startDate` control shows the literal string passed to the component.',
       },
     },
   },

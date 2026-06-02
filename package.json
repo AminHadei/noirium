@@ -52,6 +52,7 @@
     "dev": "vp dev",
     "storybook": "storybook dev -c tools/storybook -p 6006",
     "playground": "cd playground && pnpm dev --open",
+    "playground:webc": "pnpm build:webc && vp dev -c tools/vite/vite.webc-playground.config.ts",
     "build": "pnpm build:lib && pnpm build:webc",
     "build:lib": "vp build -c tools/vite/vite.lib.config.ts",
     "build:webc": "node --experimental-strip-types tools/vite/build-webc.ts",

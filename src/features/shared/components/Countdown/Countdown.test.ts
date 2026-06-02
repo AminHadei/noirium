@@ -187,7 +187,7 @@ describe('Countdown.vue', () => {
 
   describe('MySQL Date Format Support', () => {
     it('handles MySQL datetime string format', () => {
-      const futureDate = '2026-01-27 14:00:00';
+      const futureDate = dayjs().add(2, 'hour').format('YYYY-MM-DD HH:mm:ss');
       const wrapper = mount(Countdown, {
         props: {
           startDate: futureDate,
