@@ -1,30 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import dayjs from 'dayjs';
+import { computed, ref, watch } from 'vue';
 
-import DatePicker from '../DatePicker/DatePicker.vue';
+import { coerceDatePickerModelValue } from '../DatePicker/date-picker-story-utils';
 import DateInput from './DateInput.vue';
 
 const meta = {
   title: 'Shared UI/DateInput',
   component: DateInput,
   tags: ['autodocs'],
-  argTypes: {},
-} satisfies Meta<typeof DateInput>;
-
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Default: Story = {
-  args: {
-    label: 'Test date',
-    modelValue: dayjs().subtract(1, 'day').toDate(),
-  },
   argTypes: {
     label: {
       type: 'string',
     },
     modelValue: {
-      type: 'string',
       control: 'date',
     },
   },
@@ -38,13 +27,37 @@ export const Default: Story = {
   render: (args): object => ({
     components: {
       DateInput,
-      DatePicker,
     },
     setup(): object {
+      const modelValue = ref(coerceDatePickerModelValue(args.modelValue));
+      watch(
+        () => args.modelValue,
+        (value) => {
+          modelValue.value = coerceDatePickerModelValue(value);
+        },
+      );
+      const inputArgs = computed(() => ({
+        ...args,
+        modelValue: modelValue.value,
+      }));
+      const onUpdate = (value: Date): void => {
+        modelValue.value = value;
+      };
       return {
-        args,
+        inputArgs,
+        onUpdate,
       };
     },
-    template: '<DateInput v-bind="args" />',
+    template: '<DateInput v-bind="inputArgs" @update:model-value="onUpdate" />',
   }),
+} satisfies Meta<typeof DateInput>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    label: 'Test date',
+    modelValue: dayjs().subtract(1, 'day').toDate(),
+  },
 };

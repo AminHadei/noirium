@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import dayjs from 'dayjs';
+import { computed, ref, watch } from 'vue';
 
+import { coerceDatePickerModelValue } from './date-picker-story-utils';
 import DatePicker from './DatePicker.vue';
 
 const meta: Meta<typeof DatePicker> = {
@@ -15,25 +17,38 @@ const meta: Meta<typeof DatePicker> = {
       control: 'object',
     },
     modelValue: {
-      type: 'string',
       control: 'date',
     },
   },
-};
-
-export default meta;
-type Story = StoryObj;
-
-export const Default: Story = {
   render: (args): object => ({
     components: {
       DatePicker,
     },
     setup(): object {
+      const modelValue = ref(coerceDatePickerModelValue(args.modelValue));
+      watch(
+        () => args.modelValue,
+        (value) => {
+          modelValue.value = coerceDatePickerModelValue(value);
+        },
+      );
+      const pickerArgs = computed(() => ({
+        ...args,
+        modelValue: modelValue.value,
+      }));
+      const onUpdate = (value: Date): void => {
+        modelValue.value = value;
+      };
       return {
-        args,
+        pickerArgs,
+        onUpdate,
       };
     },
-    template: '<DatePicker v-bind="args" />',
+    template: '<DatePicker v-bind="pickerArgs" @update:model-value="onUpdate" />',
   }),
 };
+
+export default meta;
+type Story = StoryObj;
+
+export const Default: Story = {};
