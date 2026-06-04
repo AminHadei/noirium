@@ -109,7 +109,11 @@ theme: {
     'status-green': '#00816E',
     'status-blue': '#2563EB',
     'status-yellow': '#F59E0B',
-    // …plus soft/bg variants in uno.config.ts
+    'status-red-strong': '#C10007',
+    'status-badge-red-bg': '#FEE2E2',
+    'status-badge-red-text': '#B91C1C',
+    'status-badge-green-bg': '#D1FAE5',
+    'status-badge-green-text': '#047857',
   },
   font: {
     noto: 'Noto Sans',

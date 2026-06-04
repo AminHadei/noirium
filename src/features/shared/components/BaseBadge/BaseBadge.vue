@@ -42,6 +42,21 @@
     return PRESET_VARIANTS[props.color];
   });
 
+  const customPresetFillClasses = computed(() => {
+    if (!usesCustomColors.value) {
+      return '';
+    }
+
+    const parts: string[] = [];
+    if (!props.customBackground) {
+      parts.push('bg-surface');
+    }
+    if (!props.customText) {
+      parts.push('text-text-dark');
+    }
+    return parts.join(' ');
+  });
+
   const customStyle = computed((): CSSProperties | undefined => {
     if (!usesCustomColors.value) {
       return undefined;
@@ -56,8 +71,8 @@
 
 <template>
   <div
-    class=":uno: font-noto inline-flex items-center justify-center rounded-full px-3 py-1 text-xs font-semibold leading-none"
-    :class="badgeVariantClasses"
+    class=":uno: font-noto inline-flex items-center justify-center rounded-full px-3 py-1 text-xs leading-none font-semibold"
+    :class="[badgeVariantClasses, customPresetFillClasses]"
     :style="customStyle"
   >
     <slot />

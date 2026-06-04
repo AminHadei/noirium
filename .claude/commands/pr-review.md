@@ -1,5 +1,5 @@
 ---
-description: Review the current branch against master using AGENTS.md + REVIEW.md severity calibration.
+description: Review the current branch against main using AGENTS.md + REVIEW.md severity calibration.
 argument-hint: '[optional file glob to scope the review]'
 ---
 

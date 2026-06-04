@@ -136,6 +136,38 @@ describe('BaseBadge', () => {
       expect(wrapper.classes()).toContain('text-text-dark');
       expect(wrapper.attributes('style')).toBeUndefined();
     });
+
+    it('uses gray label tokens when only customBackground is set', () => {
+      const wrapper = mount(BaseBadge, {
+        props: {
+          color: 'custom',
+          customBackground: '#EDE9FE',
+        },
+        slots: { default: 'Badge' },
+      });
+
+      const element = wrapper.element as HTMLElement;
+      expect(element.style.backgroundColor).toBe('rgb(237, 233, 254)');
+      expect(element.style.color).toBe('');
+      expect(wrapper.classes()).toContain('text-text-dark');
+      expect(wrapper.classes()).not.toContain('bg-surface');
+    });
+
+    it('uses gray background tokens when only customText is set', () => {
+      const wrapper = mount(BaseBadge, {
+        props: {
+          color: 'custom',
+          customText: '#5B21B6',
+        },
+        slots: { default: 'Badge' },
+      });
+
+      const element = wrapper.element as HTMLElement;
+      expect(element.style.backgroundColor).toBe('');
+      expect(element.style.color).toBe('rgb(91, 33, 182)');
+      expect(wrapper.classes()).toContain('bg-surface');
+      expect(wrapper.classes()).not.toContain('text-text-dark');
+    });
   });
 
   describe('CSS Classes', () => {
@@ -146,14 +178,7 @@ describe('BaseBadge', () => {
         },
       });
 
-      const baseClasses = [
-        'font-noto',
-        'font-semibold',
-        'text-xs',
-        'rounded-full',
-        'px-3',
-        'py-1',
-      ];
+      const baseClasses = ['font-noto', 'font-semibold', 'text-xs', 'rounded-full', 'px-3', 'py-1'];
 
       for (const className of baseClasses) {
         expect(wrapper.classes()).toContain(className);
