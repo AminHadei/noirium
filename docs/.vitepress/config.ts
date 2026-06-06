@@ -39,7 +39,8 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
-    logo: { src: `${docsBase}icons/192.png`, alt: 'Noirium UI', width: 24, height: 24 },
+    // VitePress prepends `base` to themeConfig logo paths — do not include docsBase here.
+    logo: { src: '/icons/192.png', alt: 'Noirium UI', width: 24, height: 24 },
     siteTitle: 'Noirium UI',
     externalLinkIcon: true,
     editLink: {
