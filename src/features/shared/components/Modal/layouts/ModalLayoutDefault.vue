@@ -39,7 +39,9 @@
     return ':uno: pointer-events-auto relative flex flex-col w-full max-w-md max-h-[90vh] rounded-[20px] bg-white shadow-2xl dark:bg-zinc-700';
   });
 
-  const transitionName = computed(() => (isBottomSheet.value ? 'noirium-modal-sheet' : 'noirium-modal-fade'));
+  const transitionName = computed(() =>
+    isBottomSheet.value ? 'noirium-modal-sheet' : 'noirium-modal-fade',
+  );
 </script>
 
 <template>

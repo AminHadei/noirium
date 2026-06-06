@@ -231,7 +231,7 @@
               ':uno: text-primary bg-surface font-semibold': item.id === selectedId,
               ':uno: text-gray-900': item.id !== selectedId && !item.disabled,
               ':uno: hover:bg-gray-100': !item.disabled && item.id !== selectedId,
-              ':uno: ring-2 ring-primary ring-inset': focusedIndex === index && !item.disabled,
+              ':uno: ring-primary ring-2 ring-inset': focusedIndex === index && !item.disabled,
               ':uno: cursor-not-allowed opacity-50': item.disabled,
             }"
             @click="select(item as T)"

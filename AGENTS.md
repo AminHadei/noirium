@@ -20,8 +20,8 @@ All normative rules for humans and agents live in `docs/`. Cross-cutting topics,
 | `vp` CLI, pitfalls, `vite-plus/test` import path                                          | [docs/content/vite-plus.md](./docs/content/vite-plus.md)                 |
 | Public API, TypeScript rules, post-change verification, hard boundaries                   | [docs/content/conventions.md](./docs/content/conventions.md)             |
 | Conventional Commits, branch naming, Husky hooks                                          | [docs/content/git-conventions.md](./docs/content/git-conventions.md)     |
-| Changesets — bump types and release flow on `main`                                      | [docs/content/changesets.md](./docs/content/changesets.md)               |
-| GitHub Actions — CI and Storybook Pages                                                 | [docs/content/ci.md](./docs/content/ci.md)                               |
+| Changesets — bump types and release flow on `main`                                        | [docs/content/changesets.md](./docs/content/changesets.md)               |
+| GitHub Actions — CI and Storybook Pages                                                   | [docs/content/ci.md](./docs/content/ci.md)                               |
 | ADR log — why a structural choice is shaped the way it is                                 | [docs/content/decisions/index.md](./docs/content/decisions/index.md)     |
 | Task-focused how-tos                                                                      | [docs/content/recipes/index.md](./docs/content/recipes/index.md)         |
 

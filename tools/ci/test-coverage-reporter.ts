@@ -45,12 +45,7 @@ interface CoverageSummary {
   };
 }
 
-import {
-  getPRFileChanges,
-  prUrl,
-  upsertIssueComment,
-  type PRFileChange,
-} from './github-api.ts';
+import { getPRFileChanges, prUrl, upsertIssueComment, type PRFileChange } from './github-api.ts';
 
 interface FileCoverageReport {
   path: string;

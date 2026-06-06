@@ -23,14 +23,14 @@
 
 ## TL;DR
 
-| You did…                                           | You do…                                                                               |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Made a user-visible change on a feature/sub branch | `pnpm changeset` → pick bump → write summary → **commit the file**                    |
-| Made several changes in one PR                     | Run `pnpm changeset` **once per logical change** (multiple `.md` files are fine)      |
-| Touched only tests, docs, CI, internal refactor    | **No changeset.** Add the `skip-changeset` PR label if CI complains                   |
-| Need QA to test in a consumer app                  | `pnpm build:lib` + `vp link`, or publish a prerelease to npm manually              |
-| QA rejected → push more commits                    | Add **another** `pnpm changeset` if the new commits are user-visible                  |
-| QA approved → ready to merge to `main`             | Merge the PR. Maintainer cuts the real release                                        |
+| You did…                                           | You do…                                                                          |
+| -------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Made a user-visible change on a feature/sub branch | `pnpm changeset` → pick bump → write summary → **commit the file**               |
+| Made several changes in one PR                     | Run `pnpm changeset` **once per logical change** (multiple `.md` files are fine) |
+| Touched only tests, docs, CI, internal refactor    | **No changeset.** Add the `skip-changeset` PR label if CI complains              |
+| Need QA to test in a consumer app                  | `pnpm build:lib` + `vp link`, or publish a prerelease to npm manually            |
+| QA rejected → push more commits                    | Add **another** `pnpm changeset` if the new commits are user-visible             |
+| QA approved → ready to merge to `main`             | Merge the PR. Maintainer cuts the real release                                   |
 
 Never edit `package.json` `version` or `CHANGELOG.md` by hand. Never run `changeset version` or `changeset publish` yourself.
 
@@ -57,14 +57,14 @@ The choice between Changesets and hand-picked versions, and what each tradeoff b
 
 ## How it is wired into this repo
 
-| File / location                                                              | Purpose                                                                                                                                                                         |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [.changeset/config.json](../../.changeset/config.json)                       | Changesets config. `baseBranch: main`, `access: restricted`, snapshot uses `{tag}-{timestamp}`, `playground` package is ignored. |
-| [.changeset/README.md](../../.changeset/README.md)                           | Quick-reference version of this guide (kept in sync).                                                                                           |
-| [.changeset/\*.md](../../.changeset/)                                        | Pending changesets waiting for the next release.                                                                                                |
-| [tools/changesets/new-changeset.sh](../../tools/changesets/new-changeset.sh) | Thin wrapper invoked by `pnpm changeset` (passes through to the CLI).                                                                           |
-| `package.json` scripts                                                       | `changeset` (wrapper), `changeset:version`, `changeset:publish`, `changeset:status`.                                                            |
-| GitHub Actions                                                               | `check-changeset` on PRs; **Release** workflow (`changeset version` + tag); **Publish** on tag push; **Publish snapshot** for QA.              |
+| File / location                                                              | Purpose                                                                                                                           |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| [.changeset/config.json](../../.changeset/config.json)                       | Changesets config. `baseBranch: main`, `access: restricted`, snapshot uses `{tag}-{timestamp}`, `playground` package is ignored.  |
+| [.changeset/README.md](../../.changeset/README.md)                           | Quick-reference version of this guide (kept in sync).                                                                             |
+| [.changeset/\*.md](../../.changeset/)                                        | Pending changesets waiting for the next release.                                                                                  |
+| [tools/changesets/new-changeset.sh](../../tools/changesets/new-changeset.sh) | Thin wrapper invoked by `pnpm changeset` (passes through to the CLI).                                                             |
+| `package.json` scripts                                                       | `changeset` (wrapper), `changeset:version`, `changeset:publish`, `changeset:status`.                                              |
+| GitHub Actions                                                               | `check-changeset` on PRs; **Release** workflow (`changeset version` + tag); **Publish** on tag push; **Publish snapshot** for QA. |
 
 ### Branch naming convention
 
@@ -76,7 +76,7 @@ The choice between Changesets and hand-picked versions, and what each tradeoff b
 
 A changeset is YAML frontmatter + freeform markdown body:
 
-```md
+````md
 ---
 'noirium': minor
 ---
@@ -112,13 +112,14 @@ Three `patch` changesets in one release = **one** patch bump (`1.4.0 → 1.4.1`)
 ## The full lifecycle (feature → QA → `main`)
 
 Typical flow for a user-visible change:
+````
 
-```
 main
-  │
-  ├──◄── feat/my-feature          (your branch — PR into main)
-  └──◄── fix/qa-feedback        (follow-up PR if QA rejects)
-```
+│
+├──◄── feat/my-feature (your branch — PR into main)
+└──◄── fix/qa-feedback (follow-up PR if QA rejects)
+
+````
 
 ### Step 1 — Write code and add a changeset
 
@@ -128,7 +129,7 @@ git checkout -b feat/add-loading-state
 pnpm changeset           # interactive: pick bump, write summary
 git add .changeset/*.md src/...
 git commit -m "feat(button): add loading prop"
-```
+````
 
 > If the branch is **only** tests/docs/CI/internal refactor, **skip** the changeset. The CI job will fail; add the `skip-changeset` label to the PR and re-run.
 
@@ -185,7 +186,7 @@ The body of a changeset is **plain markdown**. Whatever you write lands verbatim
 
 ### Default (one-liner, the 90% case)
 
-```md
+````md
 ---
 'noirium': minor
 ---
@@ -203,6 +204,7 @@ PrimaryButton: add `loading` prop.
 Shows a spinner and disables click handling while truthy. Aria-busy is set
 automatically. Works in both library and web-component builds.
 ```
+````
 
 ### Bullet list (multiple sub-points under one entry)
 
@@ -212,6 +214,7 @@ automatically. Works in both library and web-component builds.
 ---
 
 DatePicker overhaul.
+
 - New `disablePastAndToday` prop.
 - New `positionFixed` option, on by default in the web-component build for
   shadow-DOM compatibility.
@@ -226,11 +229,11 @@ DatePicker overhaul.
 ---
 
 Button: rename props for consistency.
-| Before      | After     | Notes                                 |
+| Before | After | Notes |
 | ----------- | --------- | ------------------------------------- |
-| `isLoading` | `loading` | Boolean, same behavior                |
-| `kind`      | `variant` | `'primary' \| 'secondary' \| 'ghost'` |
-| `onTap`     | `@click`  | Use the standard Vue listener         |
+| `isLoading` | `loading` | Boolean, same behavior |
+| `kind` | `variant` | `'primary' \| 'secondary' \| 'ghost'` |
+| `onTap` | `@click` | Use the standard Vue listener |
 ```
 
 ### Code blocks (migration snippets, before/after)
@@ -241,6 +244,7 @@ Button: rename props for consistency.
 ---
 
 Drop `LegacyButton`; use `Button` with `variant="legacy"`.
+
 ```vue
 <!-- Before -->
 <LegacyButton @tap="save">Save</LegacyButton>
@@ -449,7 +453,7 @@ rm .changeset/<file>.md
 | --------------------------- | ---------------------------------------------------------------------------- |
 | New changeset               | `pnpm changeset`                                                             |
 | Inspect pending             | `pnpm changeset:status`                                                      |
-| Snapshot for QA             | `pnpm changeset version --snapshot pr-<N>` + publish (manual; see above)       |
+| Snapshot for QA             | `pnpm changeset version --snapshot pr-<N>` + publish (manual; see above)     |
 | Skip changeset legitimately | Add `skip-changeset` label to the PR, re-run CI                              |
 | Edit / delete               | Just edit / `rm` the `.md` file and commit                                   |
 | See past releases           | [CHANGELOG.md](../../CHANGELOG.md)                                           |

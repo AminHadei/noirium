@@ -19,7 +19,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - ef3543f: Add `BaseBadge` `white`, `gray`, `black`, and `custom` variants; export `BaseBadgeColor`.
 - Toast uses a neutral panel and controls; type-specific colors apply to the status icon circle only.
 
-
 ## 0.9.0
 
 ### Minor Changes
@@ -70,7 +69,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Minor Changes
 
 - 3d09d36: Add `Modal` component — a fully customizable dialog with pluggable layouts.
-
   - Two built-in layouts (`default`, `fullscreen`) plus a `:layout="MyLayout"` escape hatch so consumers can drop in their own component.
   - Class-slot props (`backdrop`, `wrapper`, `body`, `header`, `content`, `footer`, `closeButton`) override every visual zone.
   - Slots: `default` / `content`, `header`, `footer`, `close-icon`.

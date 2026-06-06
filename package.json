@@ -2,13 +2,13 @@
   "name": "noirium",
   "version": "0.10.1",
   "description": "Noirium UI — Vue 3 + TypeScript component library (lib + web components)",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AminHadei/noirium.git"
-  },
   "homepage": "https://aminhadei.github.io/noirium/",
   "bugs": {
     "url": "https://github.com/AminHadei/noirium/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AminHadei/noirium.git"
   },
   "files": [
     "dist"

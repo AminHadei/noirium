@@ -295,8 +295,8 @@ See [Web components](../web-components.md) for the full dual-build recipe.
 
 Layouts ship with stable `data-*` selectors so tests don't depend on UnoCSS class names:
 
-| Selector                   | Maps to                          |
-| -------------------------- | -------------------------------- |
+| Selector                        | Maps to                          |
+| ------------------------------- | -------------------------------- |
 | `[data-noirium-modal-backdrop]` | The backdrop element.            |
 | `[data-noirium-modal-root]`     | The layout's outermost element.  |
 | `[data-noirium-modal-body]`     | The card / sheet container.      |

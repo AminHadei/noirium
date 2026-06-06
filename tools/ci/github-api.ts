@@ -85,7 +85,9 @@ export async function upsertIssueComment(marker: string, body: string): Promise<
   const number = prNumber();
   const listResponse = await githubFetch(`/issues/${number}/comments?per_page=100`);
   if (!listResponse.ok) {
-    throw new Error(`GitHub comments list failed: ${listResponse.status} ${await listResponse.text()}`);
+    throw new Error(
+      `GitHub comments list failed: ${listResponse.status} ${await listResponse.text()}`,
+    );
   }
 
   const comments = (await listResponse.json()) as GitHubIssueComment[];
@@ -98,7 +100,9 @@ export async function upsertIssueComment(marker: string, body: string): Promise<
       body: JSON.stringify({ body }),
     });
     if (!patchResponse.ok) {
-      throw new Error(`GitHub comment update failed: ${patchResponse.status} ${await patchResponse.text()}`);
+      throw new Error(
+        `GitHub comment update failed: ${patchResponse.status} ${await patchResponse.text()}`,
+      );
     }
     console.log(`✅ Updated PR comment ${existing.id}`);
     return;
@@ -110,7 +114,9 @@ export async function upsertIssueComment(marker: string, body: string): Promise<
     body: JSON.stringify({ body }),
   });
   if (!createResponse.ok) {
-    throw new Error(`GitHub comment create failed: ${createResponse.status} ${await createResponse.text()}`);
+    throw new Error(
+      `GitHub comment create failed: ${createResponse.status} ${await createResponse.text()}`,
+    );
   }
   console.log('✅ Posted PR comment');
 }

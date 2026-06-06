@@ -133,10 +133,7 @@ async function main(): Promise<void> {
       console.log('⚠️ Tests failed! Posting PR comment...\n');
 
       const report = buildFailureReport(total, failed, failures);
-      await upsertIssueComment(
-        TEST_FAILURE_BOT_MARKER,
-        `${TEST_FAILURE_BOT_MARKER}\n\n${report}`,
-      );
+      await upsertIssueComment(TEST_FAILURE_BOT_MARKER, `${TEST_FAILURE_BOT_MARKER}\n\n${report}`);
 
       console.log('\n❌ Tests failed — notification sent');
       process.exit(1);

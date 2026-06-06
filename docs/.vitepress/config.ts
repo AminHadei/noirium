@@ -17,8 +17,14 @@ export default defineConfig({
   ignoreDeadLinks: [/^(\.\/)?\.\.\//],
   head: [
     ['link', { rel: 'icon', href: `${docsBase}favicon.ico` }],
-    ['link', { rel: 'icon', type: 'image/png', sizes: '192x192', href: `${docsBase}icons/192.png` }],
-    ['link', { rel: 'icon', type: 'image/png', sizes: '512x512', href: `${docsBase}icons/512.png` }],
+    [
+      'link',
+      { rel: 'icon', type: 'image/png', sizes: '192x192', href: `${docsBase}icons/192.png` },
+    ],
+    [
+      'link',
+      { rel: 'icon', type: 'image/png', sizes: '512x512', href: `${docsBase}icons/512.png` },
+    ],
     ['link', { rel: 'apple-touch-icon', href: `${docsBase}icons/apple-touch-icon.png` }],
     ['meta', { name: 'theme-color', content: '#171717' }],
     ['meta', { name: 'color-scheme', content: 'light dark' }],

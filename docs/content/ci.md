@@ -4,13 +4,13 @@ GitHub Actions workflows for `noirium`. Definitions live in [`.github/workflows/
 
 ## Workflows
 
-| Workflow | File | Triggers | Purpose |
-| -------- | ---- | -------- | ------- |
-| **CI** | `ci.yml` | PR + push to `main` | lint, format, typecheck, test; changeset check; PR coverage + failure bots |
-| **Deploy Pages** | `storybook-pages.yml` | push to `main`, version tags, manual | Publish VitePress docs + Storybook to GitHub Pages |
-| **Release** | `release.yml` | manual | Consume changesets on `main`, commit version bump, push tag |
-| **Publish** | `publish.yml` | push tag `v*` | Build, npm publish, webc CDN upload, GitHub Release |
-| **Publish snapshot** | `snapshot.yml` | manual (PR number) | Prerelease npm dist-tag + webc for QA |
+| Workflow             | File                  | Triggers                             | Purpose                                                                    |
+| -------------------- | --------------------- | ------------------------------------ | -------------------------------------------------------------------------- |
+| **CI**               | `ci.yml`              | PR + push to `main`                  | lint, format, typecheck, test; changeset check; PR coverage + failure bots |
+| **Deploy Pages**     | `storybook-pages.yml` | push to `main`, version tags, manual | Publish VitePress docs + Storybook to GitHub Pages                         |
+| **Release**          | `release.yml`         | manual                               | Consume changesets on `main`, commit version bump, push tag                |
+| **Publish**          | `publish.yml`         | push tag `v*`                        | Build, npm publish, webc CDN upload, GitHub Release                        |
+| **Publish snapshot** | `snapshot.yml`        | manual (PR number)                   | Prerelease npm dist-tag + webc for QA                                      |
 
 Supporting scripts: [`tools/ci/`](../../tools/ci/) — see [`tools/ci/README.md`](../../tools/ci/README.md).
 
@@ -18,9 +18,9 @@ Supporting scripts: [`tools/ci/`](../../tools/ci/) — see [`tools/ci/README.md`
 
 The **Deploy Pages** workflow builds VitePress (`pnpm docs:build`) and Storybook (`pnpm build-storybook`), then publishes a combined site (same layout as the former GitLab Pages job):
 
-| Path | Content |
-| ---- | ------- |
-| `/` | VitePress handbook |
+| Path          | Content                     |
+| ------------- | --------------------------- |
+| `/`           | VitePress handbook          |
 | `/storybook/` | Component demos (Storybook) |
 
 Default URLs:
@@ -68,11 +68,11 @@ Both jobs are best-effort (`continue-on-error: true`).
 
 ### Repository secrets
 
-| Secret | Purpose |
-| ------ | ------- |
-| `NPM_TOKEN` | npm publish (`publish.yml`, `snapshot.yml`) |
-| `ENV_PRODUCTION` | Contents of production `.env` for `pnpm build` |
-| `S3_REGION`, `S3_ENDPOINT`, `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `VITE_S3_CDN_URL` | Web component CDN upload |
+| Secret                                                                                                 | Purpose                                        |
+| ------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
+| `NPM_TOKEN`                                                                                            | npm publish (`publish.yml`, `snapshot.yml`)    |
+| `ENV_PRODUCTION`                                                                                       | Contents of production `.env` for `pnpm build` |
+| `S3_REGION`, `S3_ENDPOINT`, `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `VITE_S3_CDN_URL` | Web component CDN upload                       |
 
 ### Snapshot QA
 

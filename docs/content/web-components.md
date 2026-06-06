@@ -498,7 +498,7 @@ ls dist/webc/chunks/
 | Reference webc wrapper       | [src/features/shared/components/PrimaryButton/PrimaryButton.webc.ts](../../src/features/shared/components/PrimaryButton/PrimaryButton.webc.ts) |
 | Runtime config (prefix etc.) | [src/config.ts](../../src/config.ts)                                                                                                           |
 | Snapshot CDN deploy script   | [tools/ci/publish-webc.ts](../../tools/ci/publish-webc.ts)                                                                                     |
-| CI / Pages deploy            | [`.github/workflows/storybook-pages.yml`](../../.github/workflows/storybook-pages.yml) |
+| CI / Pages deploy            | [`.github/workflows/storybook-pages.yml`](../../.github/workflows/storybook-pages.yml)                                                         |
 
 ### Hard rules
 

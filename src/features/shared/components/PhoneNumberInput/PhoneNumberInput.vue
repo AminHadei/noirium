@@ -248,7 +248,7 @@
       </CountryDropdown>
 
       <!-- separator -->
-      <div class=":uno: mx-2 h-5 w-px bg-border" />
+      <div class=":uno: bg-border mx-2 h-5 w-px" />
 
       <!-- Single Phone Number Input -->
       <input
@@ -263,7 +263,7 @@
     </div>
     <span
       v-if="error"
-      class=":uno: absolute text-sm text-destructive"
+      class=":uno: text-destructive absolute text-sm"
       >{{ error }}</span
     >
   </div>
