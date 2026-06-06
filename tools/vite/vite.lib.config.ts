@@ -33,6 +33,8 @@ export default mergeConfig(
           types: resolve(__dirname, '../../src/entries/types.ts'),
         },
         name: 'Noirium',
+        // Vite 8+ defaults CSS output to package name (noirium.css); keep core.css for the public API.
+        cssFileName: 'core',
         formats: ['es', 'cjs'],
         fileName: (format, entryName) => {
           const ext = format === 'es' ? 'mjs' : 'cjs';

@@ -107,7 +107,7 @@ const ensureCoreStyles = (): void => {
   if (existsSync(coreStylesPath)) return;
 
   console.log('[build:webc] core.css not found — running build:lib first...');
-  execSync('pnpm build:lib', {
+  execSync('vp build -c tools/vite/vite.lib.config.ts', {
     cwd: resolve(currentDir, '../..'),
     stdio: 'inherit',
   });
