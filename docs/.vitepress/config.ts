@@ -57,7 +57,7 @@ export default defineConfig({
       { text: 'Architecture', link: '/architecture' },
       { text: 'Recipes', link: '/recipes/' },
       { text: 'Decisions', link: '/decisions/' },
-      { text: 'Storybook ↗', link: 'https://aminhadei.github.io/noirium/storybook/' },
+      { text: 'Storybook', link: 'https://aminhadei.github.io/noirium/storybook/' },
     ],
     socialLinks: [{ icon: 'github', link: 'https://github.com/AminHadei/noirium' }],
     sidebar: [
