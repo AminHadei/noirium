@@ -28,6 +28,7 @@ jobs:
       - uses: voidzero-dev/setup-vp@v1
         with:
           cache: true
+          node-version-file: .nvmrc
 
       - name: Check out PR branch
         env:
@@ -38,7 +39,7 @@ jobs:
         run: |
           SNAPSHOT_TAG="pr-${{ inputs.pr_number }}"
           echo "Bumping to snapshot version with tag: ${SNAPSHOT_TAG}"
-          pnpm changeset version --snapshot "${SNAPSHOT_TAG}"
+          vp exec changeset version --snapshot "${SNAPSHOT_TAG}"
           node -p "require('./package.json').version"
 
       - name: Write production .env
@@ -53,7 +54,7 @@ jobs:
           printf '%s' "${ENV_PRODUCTION}" > .env
 
       - name: Build
-        run: pnpm build
+        run: vp run build
 
       - uses: actions/setup-node@v4
         with:
