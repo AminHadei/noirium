@@ -10,7 +10,11 @@ import './styles.css';
  * See https://github.com/mswjs/msw-storybook-addon#configuring-msw
  * to learn how to customize it
  */
-initialize({ onUnhandledRequest: 'bypass' });
+initialize({
+  onUnhandledRequest: 'bypass',
+  // Relative path so GitHub Pages subpath deploy (/noirium/storybook/) resolves correctly.
+  serviceWorker: { url: './mockServiceWorker.js' },
+});
 
 const preview: Preview = {
   parameters: {
