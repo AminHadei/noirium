@@ -1,0 +1,3 @@
+# MSW regenerates these on postinstall; do not format (see package.json "msw.workerDirectory").
+src/mocks/mockServiceWorker.js
+public/mockServiceWorker.js

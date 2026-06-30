@@ -15,6 +15,34 @@ global.ResizeObserver = class ResizeObserver {
   public disconnect(): void {}
 };
 
+// jsdom lacks IntersectionObserver; embla-carousel and TableOfContents use it.
+global.IntersectionObserver ??= class IntersectionObserver {
+  public root = null;
+  public rootMargin = '';
+  public thresholds = [];
+  public observe(): void {}
+  public unobserve(): void {}
+  public disconnect(): void {}
+  public takeRecords(): [] {
+    return [];
+  }
+} as unknown as typeof IntersectionObserver;
+
+// jsdom lacks matchMedia; embla-carousel reads it during activation.
+if (typeof window !== 'undefined' && window.matchMedia === undefined) {
+  window.matchMedia = (query: string): MediaQueryList =>
+    ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: (): void => {},
+      removeEventListener: (): void => {},
+      addListener: (): void => {},
+      removeListener: (): void => {},
+      dispatchEvent: (): boolean => false,
+    }) as unknown as MediaQueryList;
+}
+
 beforeAll(() => {
   server.listen();
 });

@@ -92,6 +92,13 @@ export default defineConfig({
         files: ['src/features/**/*.stories.ts'],
         rules: {
           'typescript/no-unnecessary-type-arguments': 'off',
+          'typescript/explicit-function-return-type': 'off',
+        },
+      },
+      {
+        files: ['src/**/*.webc.ts'],
+        rules: {
+          'no-unsafe-argument': 'off',
         },
       },
       {
@@ -104,6 +111,7 @@ export default defineConfig({
           'no-shadow': 'off',
           'no-unnecessary-type-assertion': 'off',
           'no-object-as-default-parameter': 'off',
+          'require-await': 'off',
         },
       },
       {
