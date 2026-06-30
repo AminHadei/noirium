@@ -8,26 +8,31 @@
     visible?: boolean;
     header?: string | null;
     closable?: boolean;
+    showCloseButton?: boolean;
     closeOnEscape?: boolean;
     closeOnClickOutside?: boolean;
     width?: string;
     maxWidth?: string;
     modal?: boolean;
     contentClass?: string | null;
+    contentPadding?: boolean;
     overlayClass?: string | null;
     teleportTo?: string;
   }
 
+  // oxlint-disable-next-line max-props -- modal surface needs distinct layout, overlay, and close controls
   const props = withDefaults(defineProps<BaseDialogProps>(), {
     visible: false,
     header: null,
     closable: true,
+    showCloseButton: undefined,
     closeOnEscape: true,
     closeOnClickOutside: true,
     width: '500px',
     maxWidth: '90vw',
     modal: true,
     contentClass: null,
+    contentPadding: true,
     overlayClass: null,
     teleportTo: 'body',
   });
@@ -69,6 +74,8 @@
     const base = ':uno: fixed inset-0 bg-gray-500/75 backdrop-blur-sm';
     return [base, props.overlayClass].filter(Boolean);
   });
+
+  const showCloseButton = computed(() => props.showCloseButton ?? props.closable);
 
   const open = (): void => {
     isOpen.value = true;
@@ -184,7 +191,7 @@
             </div>
 
             <button
-              v-if="closable"
+              v-if="showCloseButton"
               type="button"
               class=":uno: absolute top-6 right-6 cursor-pointer border-none bg-transparent p-0"
               @click="close"
@@ -193,7 +200,12 @@
             </button>
 
             <!-- Content -->
-            <div class=":uno: min-h-0 flex-1 overflow-y-auto px-6 py-5">
+            <div
+              :class="[
+                ':uno: min-h-0 flex-1 overflow-y-auto',
+                contentPadding ? ':uno: px-6 py-5' : ':uno: p-0',
+              ]"
+            >
               <slot name="content">
                 <slot />
               </slot>
@@ -208,7 +220,7 @@
             </div>
           </template>
           <template v-else>
-            <div class=":uno: overflow-y-auto px-6 py-5">
+            <div class=":uno: overflow-y-auto px-3 py-2">
               <slot />
             </div>
           </template>
@@ -239,7 +251,7 @@
 
   .overlay-enter-active,
   .overlay-leave-active {
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .overlay-enter-from,

@@ -7,14 +7,12 @@ export {
   ModalContextKey,
   useModalContext,
   type ModalContext,
+  type ModalProps,
+  type ModalClasses,
+  type ModalClassValue,
+  type ModalLayoutName,
 } from '@/features/shared/components/Modal/Modal.context';
 export { createTypedModal } from '@/features/shared/components/Modal/Modal.factory';
-export type {
-  ModalProps,
-  ModalClasses,
-  ModalClassValue,
-  ModalLayoutName,
-} from '@/features/shared/components/Modal/Modal.types';
 export { default as BaseDropdown } from '@/features/shared/components/BaseDropdown/BaseDropdown.vue';
 export { default as Countdown } from '@/features/shared/components/Countdown/Countdown.vue';
 export { default as PrimaryButton } from '@/features/shared/components/PrimaryButton/PrimaryButton.vue';
@@ -27,7 +25,9 @@ export { default as PhoneNumberInput } from '@/features/shared/components/PhoneN
 export { default as CountryDropdown } from '@/features/shared/components/CountryDropdown/CountryDropdown.vue';
 export { default as DatePicker } from '@/features/shared/components/DatePicker/DatePicker.vue';
 export { default as DateInput } from '@/features/shared/components/DateInput/DateInput.vue';
+export { default as InputNumber } from '@/features/shared/components/InputNumber/InputNumber.vue';
 export { default as CheckInput } from '@/features/shared/components/CheckInput/CheckInput.vue';
+export type { Iso2 } from '@/features/shared/components/PhoneNumberInput/data';
 
 // Export composables
 export {

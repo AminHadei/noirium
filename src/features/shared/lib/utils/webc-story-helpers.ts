@@ -3,7 +3,7 @@
  *
  * A webc story renders the *built* custom-element bundle (shadow DOM,
  * adopted stylesheets) rather than the source Vue component — this is the
- * surface we ship to consumers. Bundles are served from `/webc-bundles/*.js`
+ * surface we ship to consumers. Bundles are served from `./webc-bundles/*.js`
  * via Storybook's `staticDirs`; run `pnpm build:webc` before opening webc
  * stories.
  */
@@ -14,7 +14,8 @@ export interface LoadResult {
 export const loadWebcBundle = async (tag: string, bundleUrl: string): Promise<LoadResult> => {
   if (customElements.get(tag)) return { bundleError: null };
   try {
-    await import(/* @vite-ignore */ bundleUrl);
+    const resolvedBundleUrl = new URL(bundleUrl, window.location.href).toString();
+    await import(/* @vite-ignore */ resolvedBundleUrl);
     await customElements.whenDefined(tag);
     return { bundleError: null };
   } catch (error) {

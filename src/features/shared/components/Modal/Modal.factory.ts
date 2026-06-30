@@ -1,7 +1,7 @@
 import { type Component, type VNode, defineComponent, h, ref } from 'vue';
 import type { ComponentEmit, ComponentProps, ComponentSlots } from 'vue-component-type-helpers';
 
-import type { ModalProps } from '@/features/shared/components/Modal/Modal.types';
+import type { ModalProps } from '@/features/shared/components/Modal/Modal.context';
 import Modal from '@/features/shared/components/Modal/Modal.vue';
 
 interface ModalShellEmits {

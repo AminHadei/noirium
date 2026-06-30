@@ -13,8 +13,10 @@
 
   import ModalLayoutDefault from '@/features/shared/components/Modal/layouts/ModalLayoutDefault.vue';
   import ModalLayoutFullscreen from '@/features/shared/components/Modal/layouts/ModalLayoutFullscreen.vue';
-  import { ModalContextKey } from '@/features/shared/components/Modal/Modal.context';
-  import type { ModalProps } from '@/features/shared/components/Modal/Modal.types';
+  import {
+    ModalContextKey,
+    type ModalProps,
+  } from '@/features/shared/components/Modal/Modal.context';
   import { useBodyScrollLock } from '@/features/shared/composables/useBodyScrollLock';
   import { useDialogStack } from '@/features/shared/composables/useDialogStack';
   import { useTeleportTarget } from '@/features/shared/composables/useTeleportTarget';
