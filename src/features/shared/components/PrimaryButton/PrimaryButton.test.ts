@@ -49,7 +49,7 @@ describe('PrimaryButton', () => {
         },
       });
 
-      expect(wrapper.classes()).toContain('border');
+      expect(wrapper.classes()).toContain('border-1');
       expect(wrapper.classes()).toContain('border-primary');
       expect(wrapper.classes()).toContain('text-primary');
     });

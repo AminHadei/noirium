@@ -1,0 +1,9 @@
+export const TABLE_ELEMENT = 'table';
+export const TABLE_SLOT = 'table';
+export const TABLE_ROW_SLOT = 'table-row';
+export const TABLE_CELL_SLOT = 'table-cell';
+export const TABLE_CAPTION_SLOT = 'table-caption';
+export const TABLE_BODY_SLOT = 'table-body';
+export const TABLE_FOOTER_SLOT = 'table-footer';
+export const TABLE_HEAD_SLOT = 'table-head';
+export const TABLE_HEADER_SLOT = 'table-header';

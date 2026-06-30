@@ -206,7 +206,7 @@
         tabindex="-1"
         role="datalist"
         :aria-activedescendant="focusedIndex >= 0 ? `option-${items[focusedIndex]?.id}` : undefined"
-        class=":uno: absolute z-50 min-w-full overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg focus:outline-none"
+        class=":uno: absolute z-50 min-w-full overflow-y-auto rounded-lg border-1 border-gray-200 bg-white shadow-lg focus:outline-none"
         :class="{
           ':uno: top-full': placement === 'bottom',
           ':uno: bottom-full': placement === 'top',
@@ -231,7 +231,7 @@
               ':uno: text-primary bg-surface font-semibold': item.id === selectedId,
               ':uno: text-gray-900': item.id !== selectedId && !item.disabled,
               ':uno: hover:bg-gray-100': !item.disabled && item.id !== selectedId,
-              ':uno: ring-primary ring-2 ring-inset': focusedIndex === index && !item.disabled,
+              ':uno: bg-gray-100': focusedIndex === index && !item.disabled,
               ':uno: cursor-not-allowed opacity-50': item.disabled,
             }"
             @click="select(item as T)"

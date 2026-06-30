@@ -8,7 +8,7 @@
   const PRESET_VARIANTS: Record<Exclude<BaseBadgeColor, 'custom'>, string> = {
     red: ':uno: bg-status-badge-red-bg text-status-badge-red-text',
     green: ':uno: bg-status-badge-green-bg text-status-badge-green-text',
-    white: ':uno: bg-white text-text-darker border border-border',
+    white: ':uno: bg-white text-text-darker border-1 border-border',
     gray: ':uno: bg-surface text-text-dark',
     black: ':uno: bg-primary text-white',
   };
@@ -49,10 +49,10 @@
 
     const parts: string[] = [];
     if (!props.customBackground) {
-      parts.push('bg-surface');
+      parts.push(':uno: bg-surface');
     }
     if (!props.customText) {
-      parts.push('text-text-dark');
+      parts.push(':uno: text-text-dark');
     }
     return parts.join(' ');
   });

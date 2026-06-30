@@ -41,7 +41,7 @@
       type="number"
       inputmode="numeric"
       pattern="[0-9]*"
-      class=":uno: focus-within:border-primary focus-within:ring-primary/20 border-border hover:border-border-hover flex h-10 w-full items-center justify-between rounded-lg border px-5 transition-all focus-within:ring-2 focus-visible:outline-none"
+      class=":uno: focus-within:border-primary focus-within:ring-primary/20 border-border hover:border-border-hover flex h-10 w-full items-center justify-between rounded-lg border-1 px-5 transition-all focus-within:ring-2 focus-visible:outline-none"
       :value="modelValue"
       @input="handleInput"
     />

@@ -41,7 +41,7 @@
       ':uno: px-4',
       ':uno: py-3',
       ':uno: rounded-[12px]',
-      ':uno: border',
+      ':uno: border-1',
       ':uno: min-w-[320px]',
       ':uno: max-w-[420px]',
       ':uno: transition-all',

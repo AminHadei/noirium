@@ -736,7 +736,7 @@ describe('Toast', () => {
       await nextTick();
 
       expect(wrapper.classes()).toContain('bg-white');
-      expect(wrapper.classes()).toContain('border');
+      expect(wrapper.classes()).toContain('border-1');
       expect(wrapper.find('.size-5').classes()).toContain('bg-status-blue');
     });
 
@@ -754,7 +754,7 @@ describe('Toast', () => {
       await nextTick();
 
       expect(wrapper.classes()).toContain('bg-white');
-      expect(wrapper.classes()).toContain('border');
+      expect(wrapper.classes()).toContain('border-1');
       expect(wrapper.find('.size-5').classes()).toContain('bg-status-red-strong');
     });
 
@@ -772,7 +772,7 @@ describe('Toast', () => {
       await nextTick();
 
       expect(wrapper.classes()).toContain('bg-white');
-      expect(wrapper.classes()).toContain('border');
+      expect(wrapper.classes()).toContain('border-1');
       expect(wrapper.find('.size-5').classes()).toContain('bg-status-green');
     });
 
@@ -790,7 +790,7 @@ describe('Toast', () => {
       await nextTick();
 
       expect(wrapper.classes()).toContain('bg-white');
-      expect(wrapper.classes()).toContain('border');
+      expect(wrapper.classes()).toContain('border-1');
       expect(wrapper.find('.size-5').classes()).toContain('bg-status-yellow');
     });
   });

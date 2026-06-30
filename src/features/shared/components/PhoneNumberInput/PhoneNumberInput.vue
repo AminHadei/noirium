@@ -208,7 +208,7 @@
     </label>
     <div
       ref="containerRef"
-      class=":uno: focus-within:ring-primary/20 relative flex items-center rounded-lg border px-5 py-2 transition-all focus-within:ring-2"
+      class=":uno: focus-within:ring-primary/20 relative flex items-center rounded-lg border-1 px-5 py-2 transition-all focus-within:ring-2"
       :class="[
         error
           ? ':uno: border-destructive'

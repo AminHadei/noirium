@@ -12,9 +12,11 @@
 
   dayjs.extend(dayjsDuration);
 
+  const DEFAULT_ICON_CLASS = ':uno: i-calendar-bold size-4';
+
   const props = withDefaults(defineProps<CountdownProps>(), {
     showIcon: true,
-    iconClass: ':uno: i-calendar-bold size-4',
+    iconClass: DEFAULT_ICON_CLASS,
     textClass: ':uno: text-text-light',
     format: 'short',
   });
@@ -89,8 +91,13 @@
 <template>
   <div class=":uno: countdown flex items-center">
     <span
-      v-if="showIcon"
+      v-if="showIcon && iconClass === DEFAULT_ICON_CLASS"
+      class=":uno: i-calendar-bold text-text-light size-4 shrink-0"
+    />
+    <span
+      v-else-if="showIcon"
       :class="iconClass"
+      class=":uno: text-text-light shrink-0"
     />
     <span :class="[textClass, showIcon ? ':uno: ml-1' : '']">
       <slot

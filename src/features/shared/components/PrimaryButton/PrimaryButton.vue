@@ -39,7 +39,7 @@
         ':uno: border-none bg-primary text-white hover:bg-text-darker hover:text-white active:bg-text-darker',
       ],
       outline: [
-        ':uno: bg-transparent border border-primary text-primary hover:bg-transparent hover:text-text-darker hover:border-text-darker active:bg-transparent active:text-text-darker active:border-text-darker',
+        ':uno: bg-transparent border-1 border-primary text-primary hover:bg-transparent hover:text-text-darker hover:border-text-darker active:bg-transparent active:text-text-darker active:border-text-darker',
       ],
       text: [
         ':uno: border-none bg-transparent text-primary hover:text-text-darker active:text-text-darker',

@@ -87,7 +87,7 @@ describe('BaseBadge', () => {
 
       expect(wrapper.classes()).toContain('bg-white');
       expect(wrapper.classes()).toContain('text-text-darker');
-      expect(wrapper.classes()).toContain('border');
+      expect(wrapper.classes()).toContain('border-1');
     });
 
     it('applies gray variant classes', () => {

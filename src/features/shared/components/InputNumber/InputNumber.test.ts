@@ -345,7 +345,7 @@ describe('InputNumber', () => {
       const wrapper = mount(InputNumber);
 
       const input = wrapper.find('input[type="number"]');
-      expect(input.classes()).toContain('border');
+      expect(input.classes()).toContain('border-1');
       expect(input.classes()).toContain('transition-all');
     });
 

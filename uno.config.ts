@@ -10,6 +10,7 @@ import {
 } from 'unocss';
 
 import { iconCollections } from './tools/uno/icons';
+import { themePreflight } from './tools/uno/theme';
 
 const __dirname = import.meta.dirname;
 
@@ -47,11 +48,23 @@ const config = {
   ],
   content: {
     pipeline: {
-      include: [resolve(__dirname, 'src/features/**/*.{vue,ts}')],
-      exclude: [resolve(__dirname, '**/composables/**/*.ts')],
+      include: [
+        resolve(__dirname, 'src/features/**/*.{vue,ts}'),
+        resolve(__dirname, 'playground/**/*.{vue,ts}'),
+      ],
+      exclude: [
+        resolve(__dirname, '**/composables/**/*.ts'),
+        resolve(__dirname, '**/*.test.ts'),
+        resolve(__dirname, '**/*.stories.ts'),
+      ],
     },
   },
   safelist: [...formInputSafelist],
+  preflights: [
+    {
+      getCSS: (): string => themePreflight,
+    },
+  ],
   shortcuts: {
     'line-height-150': 'leading-[150%]',
     'line-height-115': 'leading-[115%]',
