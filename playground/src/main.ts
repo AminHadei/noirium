@@ -1,10 +1,15 @@
+import '../playground-layout.css';
 import './style.css';
 import 'virtual:uno.css';
-import { createApp, type Component } from 'vue';
+import { ToastProvider } from 'noirium/ui';
+import { createApp, h, type Component } from 'vue';
 
-import 'noirium/style.css';
 import App from './App.vue';
 
-const app = createApp(App as unknown as Component);
-// app.use(CoreUI);
+const app = createApp({
+  render: () =>
+    h(ToastProvider, null, {
+      default: () => h(App as unknown as Component),
+    }),
+});
 app.mount('#app');

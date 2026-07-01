@@ -1,12 +1,21 @@
+import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import vue from '@vitejs/plugin-vue';
 import unoCSS from 'unocss/vite';
 import { defineConfig } from 'vite-plus';
 
-const __dirname = import.meta.dirname;
+const repoRoot = resolve(import.meta.dirname, '..');
+const builtCss = resolve(repoRoot, 'dist/lib/core.css');
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), unoCSS({ configFile: resolve(__dirname, './uno.config.ts') })],
+  root: import.meta.dirname,
+  plugins: [vue(), unoCSS({ configFile: resolve(repoRoot, 'uno.config.ts') })],
+  resolve: {
+    alias: {
+      '@': resolve(repoRoot, 'src'),
+      'noirium/ui': resolve(repoRoot, 'src/entries/ui.ts'),
+      ...(existsSync(builtCss) ? { 'noirium/style.css': builtCss } : {}),
+    },
+  },
 });

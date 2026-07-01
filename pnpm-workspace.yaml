@@ -25,3 +25,4 @@ peerDependencyRules:
 allowBuilds:
   esbuild: false
   msw: false
+  vue-demi: true
