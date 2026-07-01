@@ -1,1 +1,1 @@
-export * from '../features/shared';
+export * from '../features';
