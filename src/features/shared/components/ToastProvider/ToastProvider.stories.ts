@@ -5,7 +5,7 @@ import ToastProvider from './ToastProvider.vue';
 import ToastProviderStoryDemo from './ToastProviderStoryDemo.vue';
 
 const meta = {
-  title: 'Shared UI/ToastProvider',
+  title: 'Feedback/Toaster',
   component: ToastProvider,
   tags: ['autodocs'],
   argTypes: {

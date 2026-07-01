@@ -116,10 +116,10 @@
 <template>
   <div
     v-if="props.variant === 'actions'"
-    class="flex flex-col gap-2 p-4"
+    class=":uno: flex flex-col gap-2 p-4"
   >
-    <h3 class="mb-2 text-lg font-semibold">Toast Actions</h3>
-    <div class="flex flex-wrap gap-2">
+    <h3 class=":uno: mb-2 text-lg font-semibold">Toast Actions</h3>
+    <div class=":uno: flex flex-wrap gap-2">
       <PrimaryButton @click="showInfo">Show Info</PrimaryButton>
       <PrimaryButton @click="showError">Show Error</PrimaryButton>
       <PrimaryButton @click="showSuccess">Show Success</PrimaryButton>
@@ -137,7 +137,7 @@
   </div>
   <div
     v-else
-    class="p-4"
+    class=":uno: p-4"
   >
     <PrimaryButton @click="addMultipleToasts"> Add 7 Toasts (Max: 6) </PrimaryButton>
   </div>

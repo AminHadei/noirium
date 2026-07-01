@@ -6,7 +6,7 @@ import BaseDropdown from './BaseDropdown.vue';
 import type { BaseDropdownItem } from './types';
 
 const meta = {
-  title: 'Components/BaseDropdown',
+  title: 'Forms/BaseDropdown',
   tags: ['autodocs'],
   parameters: {
     docs: {

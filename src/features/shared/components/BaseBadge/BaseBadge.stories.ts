@@ -5,7 +5,7 @@ import { BaseBadge } from '@/features/shared';
 const colorOptions = ['red', 'green', 'white', 'gray', 'black', 'custom'] as const;
 
 const meta = {
-  title: 'Shared UI/BaseBadge',
+  title: 'Data Display/Badge',
   component: BaseBadge,
   tags: ['autodocs'],
   argTypes: {

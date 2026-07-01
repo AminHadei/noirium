@@ -7,7 +7,7 @@ import { CountryDropdown, PrimaryButton } from '@/features/shared';
 import type { Iso2 } from '../PhoneNumberInput/data';
 
 const meta = {
-  title: 'Shared UI/CountryDropdown',
+  title: 'Forms/CountryDropdown',
   component: CountryDropdown,
   tags: ['autodocs'],
   argTypes: {

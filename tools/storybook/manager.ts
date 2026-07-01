@@ -4,7 +4,7 @@ import { create } from 'storybook/theming';
 addons.setConfig({
   theme: create({
     base: 'light',
-    brandTitle: '<p>Noirium UI</p>',
+    brandTitle: 'Noirium UI',
     brandUrl: 'https://github.com/noirium',
   }),
 });

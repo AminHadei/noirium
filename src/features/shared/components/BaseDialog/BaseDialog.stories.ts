@@ -5,7 +5,7 @@ import { ref } from 'vue';
 import { BaseDialog, PrimaryButton } from '@/features/shared';
 
 const meta = {
-  title: 'Shared UI/BaseDialog',
+  title: 'Feedback/Dialog',
   component: BaseDialog,
   tags: ['autodocs'],
   argTypes: {

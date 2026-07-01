@@ -19,6 +19,15 @@ initialize({
 const preview: Preview = {
   parameters: {
     layout: 'centered',
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'playground', value: '#f8fafc' },
+        { name: 'light', value: '#f5f5f5' },
+        { name: 'white', value: '#ffffff' },
+        { name: 'dark', value: '#1a1a1a' },
+      ],
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

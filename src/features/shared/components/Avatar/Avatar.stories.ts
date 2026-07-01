@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { Avatar } from '@/features/shared';
 
 const meta = {
-  title: 'Shared UI/Avatar',
+  title: 'Data Display/Avatar',
   component: Avatar,
   tags: ['autodocs'],
   argTypes: {

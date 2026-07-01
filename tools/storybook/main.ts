@@ -27,6 +27,9 @@ const config: StorybookConfig = {
       builder: {
         viteConfigPath: 'tools/vite/vite.lib.config.ts',
       },
+      // vue-docgen-api / vue-component-meta resolve sibling .ts imports (Modal.context,
+      // base-badge.types, shared/index.ts re-exports) as missing .vue SFCs.
+      docgen: false,
     },
   },
   staticDirs: ['../../public', { from: '../../dist/webc', to: '/webc-bundles' }],

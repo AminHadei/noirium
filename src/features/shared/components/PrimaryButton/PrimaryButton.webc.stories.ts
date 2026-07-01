@@ -7,7 +7,7 @@ import {
 } from '@/features/shared/lib/utils/webc-story-helpers';
 
 const TAG = 'noirium-primary-button';
-const BUNDLE_URL = '/webc-bundles/primary-button.js';
+const BUNDLE_URL = './webc-bundles/primary-button.js';
 
 interface WebcArgs {
   variant: 'primary' | 'outline' | 'text';
@@ -31,15 +31,23 @@ const renderWebc = (args: WebcArgs): HTMLElement => {
   return wrapper;
 };
 
+async function loadPrimaryButtonWebcBundle(): Promise<LoadResult> {
+  const result = await loadWebcBundle(TAG, BUNDLE_URL);
+  return result;
+}
+
 const meta: Meta<WebcArgs> = {
   title: 'Web Components/PrimaryButton (webc)',
-  tags: ['webc'],
-  loaders: [
-    async (): Promise<LoadResult> => {
-      const result = await loadWebcBundle(TAG, BUNDLE_URL);
-      return result;
+  tags: ['webc', 'autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Storybook shows a sample web-component story for quick bundle smoke checks. To browse every shipped custom element with real composition and interactions, use the web-component playground instead: run `pnpm build:webc` then `pnpm playground:webc`.',
+      },
     },
-  ],
+  },
+  loaders: [loadPrimaryButtonWebcBundle],
   argTypes: {
     variant: { control: 'select', options: ['primary', 'outline', 'text'] },
     label: { control: 'text' },
@@ -70,12 +78,8 @@ const meta: Meta<WebcArgs> = {
 export default meta;
 type Story = StoryObj<WebcArgs>;
 
-export const Primary: Story = {
-  args: { variant: 'primary', label: 'Get Started' },
-};
+export const Default: Story = {};
+
 export const Outline: Story = {
-  args: { variant: 'outline', label: 'Learn More' },
-};
-export const Text: Story = {
-  args: { variant: 'text', label: 'View Details' },
+  args: { variant: 'outline', label: 'Outline' },
 };

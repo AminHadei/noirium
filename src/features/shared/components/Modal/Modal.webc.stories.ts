@@ -7,7 +7,7 @@ import {
 } from '@/features/shared/lib/utils/webc-story-helpers';
 
 const TAG = 'noirium-modal';
-const BUNDLE_URL = '/webc-bundles/modal.js';
+const BUNDLE_URL = './webc-bundles/modal.js';
 
 interface WebcArgs {
   layout: 'default' | 'fullscreen';

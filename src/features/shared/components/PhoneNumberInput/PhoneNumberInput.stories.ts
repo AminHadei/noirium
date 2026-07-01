@@ -4,7 +4,7 @@ import { ref } from 'vue';
 import { PhoneNumberInput } from '@/features/shared';
 
 const meta = {
-  title: 'Shared UI/PhoneNumberInput',
+  title: 'Forms/PhoneNumberInput',
   component: PhoneNumberInput,
   tags: ['autodocs'],
   argTypes: {

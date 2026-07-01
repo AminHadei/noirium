@@ -1,16 +1,19 @@
 // oxlint-disable no-console
 import { execSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import { readdir, readFile, rm } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
+import { availableParallelism } from 'node:os';
 import { resolve } from 'node:path';
 
 import vue from '@vitejs/plugin-vue';
+import { rimraf } from 'rimraf';
 import UnoCSS from 'unocss/vite';
 import { build, type Plugin } from 'vite-plus';
 
 const currentDir = import.meta.dirname;
 const distDir = resolve(currentDir, '../../dist/webc');
 const coreStylesPath = resolve(currentDir, '../../dist/lib/core.css');
+const WEB_COMPONENT_BUILD_CONCURRENCY = Math.max(1, Math.floor(availableParallelism() / 2));
 
 const VIRTUAL_ID = 'virtual:core-styles';
 const RESOLVED_VIRTUAL_ID = `\0${VIRTUAL_ID}`;
@@ -57,7 +60,7 @@ async function getWebComponentEntries(): Promise<Record<string, string>> {
 
       await Promise.all(subdirPromises);
     } catch {
-      // Directory might not exist, skip silently
+      // Directory might not exist, skip silently.
     }
   }
 
@@ -76,12 +79,11 @@ const buildCompatBundle = async (entryName: string, entryFile: string): Promise<
       },
     },
     define: {
-      'import.meta.env.VITE_BASE_URL': "''",
       'process.env.NODE_ENV': JSON.stringify('production'),
     },
     build: {
       copyPublicDir: false,
-      minify: 'terser',
+      minify: 'esbuild',
       lib: {
         entry: entryFile,
         formats: ['es'],
@@ -101,6 +103,28 @@ const buildCompatBundle = async (entryName: string, entryFile: string): Promise<
       cssCodeSplit: false,
     },
   });
+};
+
+const runWithConcurrency = async <T>(
+  items: readonly T[],
+  concurrency: number,
+  worker: (item: T) => Promise<void>,
+): Promise<void> => {
+  if (items.length === 0) return;
+
+  let index = 0;
+  const slots = Array.from({ length: Math.min(concurrency, items.length) }, async () => {
+    while (index < items.length) {
+      const item = items[index];
+      if (item === undefined) {
+        return;
+      }
+      index += 1;
+      // eslint-disable-next-line no-await-in-loop
+      await worker(item);
+    }
+  });
+  await Promise.all(slots);
 };
 
 const ensureCoreStyles = (): void => {
@@ -123,15 +147,18 @@ const main = async (): Promise<void> => {
   const entries = await getWebComponentEntries();
   const sortedEntries = Object.entries(entries).toSorted(([a], [b]) => a.localeCompare(b));
 
-  await rm(distDir, { recursive: true, force: true });
+  await rimraf(distDir);
 
-  await Promise.all(
+  await runWithConcurrency(
+    sortedEntries,
+    WEB_COMPONENT_BUILD_CONCURRENCY,
     // oxlint-disable-next-line typescript/promise-function-async
-    sortedEntries.map(([entryName, entryFile]) => buildCompatBundle(entryName, entryFile)),
+    ([entryName, entryFile]) => buildCompatBundle(entryName, entryFile),
   );
 
-  // post build commands - clean up unnecessary files
-  await rm(resolve(distDir, 'assets'), { recursive: true });
+  if (existsSync(resolve(distDir, 'assets'))) {
+    await rimraf(resolve(distDir, 'assets'));
+  }
 };
 
 await main();

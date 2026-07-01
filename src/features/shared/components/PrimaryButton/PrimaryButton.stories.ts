@@ -4,7 +4,7 @@ import { fn } from 'storybook/test';
 import { PrimaryButton } from '@/features/shared';
 
 const meta = {
-  title: 'Shared UI/PrimaryButton',
+  title: 'Buttons/PrimaryButton',
   component: PrimaryButton,
   tags: ['autodocs'],
   argTypes: {

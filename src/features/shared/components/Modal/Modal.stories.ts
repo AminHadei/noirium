@@ -2,11 +2,12 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { fn } from 'storybook/test';
 import { type VNode, defineComponent, h, ref } from 'vue';
 
-import { Modal, PrimaryButton } from '@/features/shared';
 import { useModalContext } from '@/features/shared/components/Modal/Modal.context';
+import Modal from '@/features/shared/components/Modal/Modal.vue';
+import PrimaryButton from '@/features/shared/components/PrimaryButton/PrimaryButton.vue';
 
 const meta = {
-  title: 'Shared UI/Modal',
+  title: 'Feedback/Modal',
   component: Modal,
   tags: ['autodocs'],
   parameters: {

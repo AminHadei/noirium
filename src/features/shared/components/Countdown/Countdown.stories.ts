@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { Countdown } from '@/features/shared';
 
 const meta = {
-  title: 'Shared UI/Countdown',
+  title: 'Data Display/Countdown',
   component: Countdown,
   tags: ['autodocs'],
   argTypes: {

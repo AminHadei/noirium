@@ -6,7 +6,7 @@ import { coerceDatePickerModelValue } from './date-picker-story-utils';
 import DatePicker from './DatePicker.vue';
 
 const meta: Meta<typeof DatePicker> = {
-  title: 'Shared UI/DatePicker',
+  title: 'Forms/DatePicker',
   component: DatePicker,
   tags: ['autodocs'],
   args: {

@@ -6,7 +6,7 @@ import { PrimaryButton } from '@/features/shared';
 import Toast from './Toast.vue';
 
 const meta = {
-  title: 'Shared UI/Toast',
+  title: 'Feedback/Toast',
   component: Toast,
   tags: ['autodocs'],
   argTypes: {
