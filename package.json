@@ -1,6 +1,6 @@
 {
   "name": "noirium",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Noirium UI — Vue 3 + TypeScript component library (lib + web components)",
   "homepage": "https://aminhadei.github.io/noirium/",
   "bugs": {
