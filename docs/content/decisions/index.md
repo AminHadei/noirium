@@ -9,6 +9,7 @@ See the `doc-authoring` skill for when to write a new ADR.
 ## Index
 
 - [0001 — Changesets for versioning](./0001-changesets-for-versioning.md) — Accepted, 2026-04-25
+- [0002 — Multi-feature component layout](./0002-multi-feature-component-layout.md) — Accepted, 2026-06-29
 
 ### Template
 

@@ -79,6 +79,13 @@ pnpm build-storybook      # builds webc bundles then produces a static Storybook
 
 Storybook config lives at `tools/storybook/`; the webc bundles are served via `staticDirs` mapping `dist/webc` → `/webc-bundles/`. Run `pnpm build:webc` before opening webc stories or they will render a "missing bundle" banner.
 
+Storybook keeps a small sample web-component story for smoke checks. To preview **all** shipped custom elements with real composition and interactions, use the web-component playground:
+
+```sh
+pnpm build:webc
+pnpm playground:webc
+```
+
 Helpers in `src/features/shared/lib/utils/webc-story-helpers.ts`:
 
 - `loadWebcBundle(tag, bundleUrl)` — dynamic-imports the bundle as a Storybook loader. Returns `{ bundleError }` so the story can render a banner instead of crashing when `dist/webc/` is missing.

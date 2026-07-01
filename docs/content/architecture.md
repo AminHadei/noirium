@@ -18,11 +18,15 @@ Key constraint: `@popperjs/core` is aliased to its UMD build in the web-componen
 
 ## Feature-based architecture
 
-Components live under `src/features/shared/` — a single feature module for the UI kit. When a future domain needs its own components, add a sibling feature directory and export through `src/entries/ui.ts`.
+Components live under `src/features/`. Legacy UI (`PrimaryButton`, `Modal`, `Toast`, …) remains in `shared/`; new domain components land in sibling features (`buttons`, `forms`, `feedback`, …) and export through `src/features/index.ts` → `src/entries/ui.ts`. See [ADR 0002](./decisions/0002-multi-feature-component-layout.md) and [Component parity](./component-parity.md).
 
 ```
 src/features/
-  shared/           # UI kit: PrimaryButton, Modal, Toast, DatePicker, ApiService, utils
+  shared/           # Legacy UI kit + ApiService, utils
+  buttons/          # IconButton, …
+  data-display/     # Text, …
+  forms/            # Label, …
+  feedback/         # Alert, …
 ```
 
 Each component follows the same shape:

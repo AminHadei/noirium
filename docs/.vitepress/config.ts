@@ -75,6 +75,7 @@ export default defineConfig({
         text: 'UI',
         items: [
           { text: 'Components', link: '/components' },
+          { text: 'Component parity', link: '/component-parity' },
           { text: 'Styling', link: '/styling' },
           { text: 'Web components', link: '/web-components' },
         ],
