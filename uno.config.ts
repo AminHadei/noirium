@@ -14,7 +14,9 @@ import { themePreflight } from './tools/uno/theme';
 
 const __dirname = import.meta.dirname;
 
-// Generate safelist for dynamic flag icon classes
+// Icons referenced only from *.stories.ts (excluded from Uno content scan).
+const storyIconSafelist = ['i-search', 'i-search size-5'];
+
 const formInputSafelist = ['form-main-input'];
 
 const config = {
@@ -59,7 +61,7 @@ const config = {
       ],
     },
   },
-  safelist: [...formInputSafelist],
+  safelist: [...formInputSafelist, ...storyIconSafelist],
   preflights: [
     {
       getCSS: (): string => themePreflight,
