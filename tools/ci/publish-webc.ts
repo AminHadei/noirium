@@ -12,13 +12,15 @@ const requiredEnvVars = [
   'S3_ACCESS_KEY_ID',
   'S3_SECRET_ACCESS_KEY',
   'VITE_S3_CDN_URL',
-];
+] as const;
 
-for (const varName of requiredEnvVars) {
-  // eslint-disable-next-line security/detect-object-injection
-  if (!Bun.env[varName]) {
-    throw new Error(`Environment variable ${varName} is not set.`);
-  }
+const missingEnvVars = requiredEnvVars.filter((varName) => !Bun.env[varName]);
+
+if (missingEnvVars.length > 0) {
+  console.log(
+    `Skipping webc CDN upload — missing env: ${missingEnvVars.join(', ')}`,
+  );
+  process.exit(0);
 }
 
 const s3 = new S3Client({
