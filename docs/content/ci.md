@@ -68,10 +68,10 @@ Both jobs are best-effort (`continue-on-error: true`).
 
 ### Repository secrets
 
-| Secret                                                                                                 | Purpose                                        |
-| ------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
-| `NPM_TOKEN`                                                                                            | npm publish (`publish.yml`, `snapshot.yml`)    |
-| `ENV_PRODUCTION`                                                                                       | Contents of production `.env` for `pnpm build` |
+| Secret                                                                                                 | Purpose                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ |
+| `NPM_TOKEN`                                                                                            | npm publish (`publish.yml`, `snapshot.yml`)            |
+| `ENV_PRODUCTION`                                                                                       | Contents of production `.env` for `pnpm build`         |
 | `S3_REGION`, `S3_ENDPOINT`, `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `VITE_S3_CDN_URL` | Web component CDN upload (optional — skipped if unset) |
 
 ### Snapshot QA

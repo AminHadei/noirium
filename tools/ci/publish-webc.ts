@@ -17,9 +17,7 @@ const requiredEnvVars = [
 const missingEnvVars = requiredEnvVars.filter((varName) => !Bun.env[varName]);
 
 if (missingEnvVars.length > 0) {
-  console.log(
-    `Skipping webc CDN upload — missing env: ${missingEnvVars.join(', ')}`,
-  );
+  console.log(`Skipping webc CDN upload — missing env: ${missingEnvVars.join(', ')}`);
   process.exit(0);
 }
 
