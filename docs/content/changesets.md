@@ -57,13 +57,13 @@ The choice between Changesets and hand-picked versions, and what each tradeoff b
 
 ## How it is wired into this repo
 
-| File / location                                                              | Purpose                                                                                                                           |
-| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| [.changeset/config.json](../../.changeset/config.json)                       | Changesets config. `baseBranch: main`, `access: restricted`, snapshot uses `{tag}-{timestamp}`, `playground` package is ignored.  |
-| [.changeset/README.md](../../.changeset/README.md)                           | Quick-reference version of this guide (kept in sync).                                                                             |
-| [.changeset/\*.md](../../.changeset/)                                        | Pending changesets waiting for the next release.                                                                                  |
-| [tools/changesets/new-changeset.sh](../../tools/changesets/new-changeset.sh) | Thin wrapper invoked by `pnpm changeset` (passes through to the CLI).                                                             |
-| `package.json` scripts                                                       | `changeset` (wrapper), `changeset:version`, `changeset:publish`, `changeset:status`.                                              |
+| File / location                                                              | Purpose                                                                                                                                                                |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [.changeset/config.json](../../.changeset/config.json)                       | Changesets config. `baseBranch: main`, `access: restricted`, snapshot uses `{tag}-{timestamp}`, `playground` package is ignored.                                       |
+| [.changeset/README.md](../../.changeset/README.md)                           | Quick-reference version of this guide (kept in sync).                                                                                                                  |
+| [.changeset/\*.md](../../.changeset/)                                        | Pending changesets waiting for the next release.                                                                                                                       |
+| [tools/changesets/new-changeset.sh](../../tools/changesets/new-changeset.sh) | Thin wrapper invoked by `pnpm changeset` (passes through to the CLI).                                                                                                  |
+| `package.json` scripts                                                       | `changeset` (wrapper), `changeset:version`, `changeset:publish`, `changeset:status`.                                                                                   |
 | GitHub Actions                                                               | `check-changeset` on PRs; **Release** workflow (`changeset version` + tag); **Publish** on push to `main` when the version is new on npm; **Publish snapshot** for QA. |
 
 ### Branch naming convention

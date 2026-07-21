@@ -15,6 +15,7 @@ jspm_packages
 dist
 dist-ssr
 *.local
+*.tgz
 .pnpm-store
 
 # Storybook

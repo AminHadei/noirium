@@ -4,13 +4,13 @@ GitHub Actions workflows for `noirium`. Definitions live in [`.github/workflows/
 
 ## Workflows
 
-| Workflow             | File                  | Triggers                             | Purpose                                                                    |
-| -------------------- | --------------------- | ------------------------------------ | -------------------------------------------------------------------------- |
-| **CI**               | `ci.yml`              | PR + push to `main`                  | lint, format, typecheck, test; changeset check; PR coverage + failure bots |
-| **Deploy Pages**     | `storybook-pages.yml` | push to `main`, manual               | Publish VitePress docs + Storybook to GitHub Pages                         |
-| **Release**          | `release.yml`         | manual                               | Consume changesets on `main`, commit version bump, push tag                |
-| **Publish**          | `publish.yml`         | push to `main`, manual               | If `package.json` version is new on npm: build, publish, optional webc CDN, GitHub Release |
-| **Publish snapshot** | `snapshot.yml`        | manual (PR number)                   | Prerelease npm dist-tag + webc for QA                                      |
+| Workflow             | File                  | Triggers               | Purpose                                                                                    |
+| -------------------- | --------------------- | ---------------------- | ------------------------------------------------------------------------------------------ |
+| **CI**               | `ci.yml`              | PR + push to `main`    | lint, format, typecheck, test; changeset check; PR coverage + failure bots                 |
+| **Deploy Pages**     | `storybook-pages.yml` | push to `main`, manual | Publish VitePress docs + Storybook to GitHub Pages                                         |
+| **Release**          | `release.yml`         | manual                 | Consume changesets on `main`, commit version bump, push tag                                |
+| **Publish**          | `publish.yml`         | push to `main`, manual | If `package.json` version is new on npm: build, publish, optional webc CDN, GitHub Release |
+| **Publish snapshot** | `snapshot.yml`        | manual (PR number)     | Prerelease npm dist-tag + webc for QA                                                      |
 
 Supporting scripts: [`tools/ci/`](../../tools/ci/) — see [`tools/ci/README.md`](../../tools/ci/README.md).
 
