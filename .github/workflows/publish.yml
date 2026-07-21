@@ -30,6 +30,8 @@ jobs:
         with:
           node-version-file: .nvmrc
           registry-url: https://registry.npmjs.org
+          # package.json has packageManager: pnpm; don't auto-cache before pnpm exists
+          package-manager-cache: false
 
       - name: Check registry for duplicate version
         env:
@@ -94,6 +96,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           registry-url: https://registry.npmjs.org
+          package-manager-cache: false
 
       - name: Publish to npm
         env:

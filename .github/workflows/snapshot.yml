@@ -60,6 +60,7 @@ jobs:
         with:
           node-version-file: .nvmrc
           registry-url: https://registry.npmjs.org
+          package-manager-cache: false
 
       - name: Publish snapshot to npm
         env:
