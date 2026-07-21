@@ -1,7 +1,7 @@
 name: Release
 
 # Consumes pending changesets on main, bumps version, updates CHANGELOG, commits, and tags.
-# Publishing to npm/CDN runs automatically when the tag is pushed (publish.yml).
+# Pushing the version bump to main triggers publish.yml (npm + GitHub Release).
 
 on:
   workflow_dispatch:

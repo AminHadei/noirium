@@ -64,7 +64,7 @@ The choice between Changesets and hand-picked versions, and what each tradeoff b
 | [.changeset/\*.md](../../.changeset/)                                        | Pending changesets waiting for the next release.                                                                                  |
 | [tools/changesets/new-changeset.sh](../../tools/changesets/new-changeset.sh) | Thin wrapper invoked by `pnpm changeset` (passes through to the CLI).                                                             |
 | `package.json` scripts                                                       | `changeset` (wrapper), `changeset:version`, `changeset:publish`, `changeset:status`.                                              |
-| GitHub Actions                                                               | `check-changeset` on PRs; **Release** workflow (`changeset version` + tag); **Publish** on tag push; **Publish snapshot** for QA. |
+| GitHub Actions                                                               | `check-changeset` on PRs; **Release** workflow (`changeset version` + tag); **Publish** on push to `main` when the version is new on npm; **Publish snapshot** for QA. |
 
 ### Branch naming convention
 
@@ -337,13 +337,13 @@ Do nothing. The dist-tag `pr-1234` becomes orphaned and harmless. The next real 
 
 1. Confirm `main` has every PR you want to ship (each with its changeset merged).
 2. **Actions → Release → Run workflow** — runs `pnpm changeset version`, commits `chore(release): v<version>`, pushes `main` and tag `v<version>`.
-3. Pushing the tag triggers **Publish** — production build, `npm publish`, webc CDN upload, and a GitHub Release with notes from `CHANGELOG.md`.
+3. The push to `main` triggers **Publish** — if that version is not on npm yet: production build, `npm publish`, optional webc CDN upload, and a GitHub Release with notes from `CHANGELOG.md`.
 
 Configure repository secrets first — see [CI](./ci.md#release-and-publish).
 
 ### Cutting a release (manual fallback)
 
-Same as the automated flow, but run `pnpm changeset version`, commit, tag, and push locally. Tag push still triggers **Publish** if secrets are set.
+Bump `package.json` / `CHANGELOG.md` on `main` (or merge a release PR). **Publish** runs on the push and ships any version that is not already on npm. You can also run **Publish** manually via `workflow_dispatch`.
 
 ---
 

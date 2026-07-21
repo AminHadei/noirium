@@ -9,7 +9,7 @@ GitHub Actions workflows for `noirium`. Definitions live in [`.github/workflows/
 | **CI**               | `ci.yml`              | PR + push to `main`                  | lint, format, typecheck, test; changeset check; PR coverage + failure bots |
 | **Deploy Pages**     | `storybook-pages.yml` | push to `main`, manual               | Publish VitePress docs + Storybook to GitHub Pages                         |
 | **Release**          | `release.yml`         | manual                               | Consume changesets on `main`, commit version bump, push tag                |
-| **Publish**          | `publish.yml`         | push tag `v*`                        | Build, npm publish, webc CDN upload, GitHub Release                        |
+| **Publish**          | `publish.yml`         | push to `main`, manual               | If `package.json` version is new on npm: build, publish, optional webc CDN, GitHub Release |
 | **Publish snapshot** | `snapshot.yml`        | manual (PR number)                   | Prerelease npm dist-tag + webc for QA                                      |
 
 Supporting scripts: [`tools/ci/`](../../tools/ci/) — see [`tools/ci/README.md`](../../tools/ci/README.md).
@@ -63,8 +63,8 @@ Both jobs are best-effort (`continue-on-error: true`).
 ## Release and publish
 
 1. Merge feature PRs to `main` (each with a changeset when user-visible).
-2. Run workflow **Release** (manual) — runs `pnpm changeset version`, commits `chore(release): vX.Y.Z`, pushes tag `vX.Y.Z`.
-3. Tag push triggers **Publish** — validates tag vs `package.json`, builds with **`ENV_PRODUCTION`**, publishes to npm (**`NPM_TOKEN`**), uploads webc to S3, creates a GitHub Release from `CHANGELOG.md`.
+2. Bump `package.json` version (manually, or via **Actions → Release** which runs `pnpm changeset version`, commits `chore(release): vX.Y.Z`, and tags).
+3. Every push to `main` runs **Publish**. If that version is not yet on npm, it builds with **`ENV_PRODUCTION`**, publishes (**`NPM_TOKEN`**), optionally uploads webc to S3, and creates a GitHub Release from `CHANGELOG.md`. If the version is already published, the workflow skips cleanly.
 
 ### Repository secrets
 
